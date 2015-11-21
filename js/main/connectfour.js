@@ -15,5 +15,9 @@ function initializeBoard() {
     return board;
 }
 
+function isFilled(board, column, row){
+    return board[column][row] != not_filled ? true : false;
+}
+
 
 
