@@ -7,8 +7,17 @@ describe("initialization", function() {
     });
 
     it("should have an empty board with no fill ins", function() {
-        expect(board[0][0]).toBe(not_filled);
+        for(var column = 0; column < 7; column++) {
+            for(var row = 0; row < 6; row++) {
+                expect(board[column][row]).toBe(not_filled);
+            }
+        }
     });
 
 
 });
+
+describe("putting in a new piece", function() {
+
+});
+

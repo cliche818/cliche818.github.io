@@ -1,5 +1,3 @@
-
-var filled = 1;
 var not_filled = 0;
 
 function initializeBoard() {
@@ -7,14 +5,15 @@ function initializeBoard() {
     var column_size = 7;
     var board = new Array(column_size);
 
-    for(var i = 0; i < row_size; i++) {
+    for(var i = 0; i < column_size; i++) {
         board[i] = new Array(row_size);
 
-        for(var j = 0; j < column_size; j++) {
+        for(var j = 0; j < row_size; j++) {
             board[i][j] = not_filled;
         }
     }
-
     return board;
 }
+
+
 
