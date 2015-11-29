@@ -41,11 +41,21 @@ describe("Connect Four Board", function () {
     });
 
     describe("winner", function() {
-        it("should return false if no winner from the last play", function() {
-            for (var column in [0,1,2,3,4,5,6]) {
-                expect(connectFourBoard.winner(column)).toBe(false);
-            }
+
+        describe("if there is no winner from last play", function() {
+            it("should return false at the beginning of a match", function() {
+                for (var column in [0,1,2,3,4,5,6]) {
+                    expect(connectFourBoard.winner(column)).toBe(false);
+                }
+            });
+
+            it("should return false after a play", function() {
+               connectFourBoard.addDisc(1,1);
+               expect(connectFourBoard.winner(1)).toBe(false);
+            });
         });
+
+
 
        describe("if there is a winner from the last play", function() {
             it("should return true when there is a horizontal row of 4", function() {
@@ -60,7 +70,16 @@ describe("Connect Four Board", function () {
                 expect(connectFourBoard.winner(1)).toBe(true);
             });
 
+           xit("should return true when there is a vertical of 4", function() {
+               connectFourBoard.addDisc(1,1);
+               connectFourBoard.addDisc(1,1);
+               connectFourBoard.addDisc(1,1);
+               connectFourBoard.addDisc(1,1);
+
+               expect(connectFourBoard.winner(1)).toBe(true);
+           });
        });
+
     });
 
 });

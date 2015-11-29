@@ -55,6 +55,8 @@ ConnectFourBoard.prototype = {
 
         if (this.number_straight_4_horizontally(column, last_played_row, last_player) >= 4) {
             return true;
+        } else {
+            return false;
         }
     },
 
