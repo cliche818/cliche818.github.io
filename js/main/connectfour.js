@@ -40,9 +40,10 @@ ConnectFourBoard.prototype = {
     winner: function(column){
         var last_played_row;
 
-        for (var row in [5,4,3,2,1,0]) {
+        for (var row = 5 ; row >= 0; row --) {
+            console.log(row);
             if (this.isFilled(column, row)) {
-               last_played_row = row;
+                last_played_row = row;
                 break;
             }
         }
@@ -53,14 +54,16 @@ ConnectFourBoard.prototype = {
 
         var last_player = this.board[column][last_played_row];
 
-        if (this.number_straight_4_horizontally(column, last_played_row, last_player) >= 4) {
+        if (this.number_of_connects_horizontally(column, last_played_row, last_player) >= 4) {
+            return true;
+        } else if (this.number_of_connects_vertically(column, last_played_row, last_player) >= 4) {
             return true;
         } else {
             return false;
         }
     },
 
-    number_straight_4_horizontally: function (column, last_played_row, last_player) {
+    number_of_connects_horizontally: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
 
         for (var column_from_left = column - 1; column_from_left >= 0 && column - 4 < column_from_left; column_from_left--) {
@@ -78,6 +81,23 @@ ConnectFourBoard.prototype = {
                 break;
             }
         }
+        return number_of_connects;
+    } ,
+
+    number_of_connects_vertically: function (column, last_played_row, last_player) {
+        var number_of_connects = 1;
+
+        console.log(this.board);
+        console.log(last_played_row);
+        for(var row_from_bottom = last_played_row - 1; row_from_bottom >= 0 && row_from_bottom > last_played_row - 4; row_from_bottom--) {
+            console.log(row_from_bottom);
+            if(this.board[column][last_played_row] === last_player) {
+                number_of_connects++;
+            } else {
+                break;
+            }
+        }
+
         return number_of_connects;
     }
 

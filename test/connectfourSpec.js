@@ -70,7 +70,7 @@ describe("Connect Four Board", function () {
                 expect(connectFourBoard.winner(1)).toBe(true);
             });
 
-           xit("should return true when there is a vertical of 4", function() {
+           it("should return true when there is a vertical of 4", function() {
                connectFourBoard.addDisc(1,1);
                connectFourBoard.addDisc(1,1);
                connectFourBoard.addDisc(1,1);
