@@ -27,12 +27,20 @@ describe("Connect Four", function () {
         });
     });
 
-    //describe("putting in a new piece", function () {
-    //    it("should put the piece at the bottom of the board for column 1", function() {
-    //        board = addDisc(board, 1);
-    //        expect(isFilled(board,1,0)).toBe(true);
-    //    });
-    //});
+    describe("putting in a new piece", function () {
+        it("should put the piece at the bottom of the board for column 1", function() {
+            addDisc(board, 1, 1);
+            expect(isFilled(board,1,0)).toBe(true);
+        });
+
+        it("should put the piece at the lowest possible place in column 1", function() {
+            for (var row in [0,1,2,3,4,5,6]) {
+                addDisc(board, 1, 2);
+                expect(isFilled(board,1,row)).toBe(true);
+            }
+        });
+    });
+
 });
 
 

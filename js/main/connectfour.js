@@ -19,5 +19,12 @@ function isFilled(board, column, row){
     return board[column][row] != not_filled ? true : false;
 }
 
+function addDisc(board, column, player) {
+    for (var row in [0,1,2,3,4,5,6]) {
+        if (!isFilled(board, column, row)) {
+            board[column][row] = player;
+        }
+    }
+}
 
 
