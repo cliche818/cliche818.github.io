@@ -1,3 +1,7 @@
+function ConnectFourBoard() {
+    this.board = initializeBoard();
+}
+
 var not_filled = 0;
 
 function initializeBoard() {
@@ -15,16 +19,24 @@ function initializeBoard() {
     return board;
 }
 
-function isFilled(board, column, row){
-    return board[column][row] != not_filled ? true : false;
-}
+ConnectFourBoard.prototype = {
+    constructor: function(){
+        this.board = initializeBoard();
+    },
 
-function addDisc(board, column, player) {
-    for (var row in [0,1,2,3,4,5,6]) {
-        if (!isFilled(board, column, row)) {
-            board[column][row] = player;
+    addDisc: function(column, player) {
+        for (var row in [0,1,2,3,4,5,6]) {
+            if (!this.isFilled(column, row)) {
+                this.board[column][row] = player;
+                break;
+            }
         }
+    },
+
+    isFilled: function(column, row){
+        return this.board[column][row] == not_filled ? false : true;
     }
-}
+
+};
 
 
