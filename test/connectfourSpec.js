@@ -1,4 +1,4 @@
-describe("Connect Four", function () {
+describe("Connect Four Board", function () {
 
     var connectFourBoard;
 
@@ -17,7 +17,7 @@ describe("Connect Four", function () {
         });
     });
 
-    describe("check if a space is filled", function () {
+    describe("#is_filled", function () {
         it('should return false if a space is NOT filled', function () {
             expect(connectFourBoard.isFilled(0,0)).toBe(false);
         });
@@ -30,7 +30,7 @@ describe("Connect Four", function () {
 
     });
 
-    describe("putting in a new piece", function () {
+    describe("#addDisc", function () {
         it("should put the piece at the lowest possible place in column 1", function() {
             for (var column in [0,1,2,3,4,5,6]) {
                 connectFourBoard.addDisc(column, 2);
@@ -38,6 +38,25 @@ describe("Connect Four", function () {
                 expect(connectFourBoard.isFilled(column,1)).toBe(false);
             }
         });
+    });
+
+    describe("winner", function() {
+        it("should return false if no winner", function() {
+            expect(connectFourBoard.winner()).toBe(false);
+        });
+
+       xdescribe("if there is a winner", function() {
+            it("should return the winner when there is a vertical row of 4", function() {
+                connectFourBoard.addDisc(1,1);
+                connectFourBoard.addDisc(2,1);
+                connectFourBoard.addDisc(3,1);
+                connectFourBoard.addDisc(4,1);
+
+                expect(connectFourBoard.winner()).toBe(true);
+            });
+
+
+       });
     });
 
 });

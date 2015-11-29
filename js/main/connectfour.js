@@ -35,6 +35,10 @@ ConnectFourBoard.prototype = {
 
     isFilled: function(column, row){
         return this.board[column][row] == not_filled ? false : true;
+    },
+
+    winner: function(){
+        return false;
     }
 
 };
