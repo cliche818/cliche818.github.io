@@ -41,7 +41,6 @@ ConnectFourBoard.prototype = {
         var last_played_row;
 
         for (var row = 5 ; row >= 0; row --) {
-            console.log(row);
             if (this.isFilled(column, row)) {
                 last_played_row = row;
                 break;
@@ -57,6 +56,8 @@ ConnectFourBoard.prototype = {
         if (this.number_of_connects_horizontally(column, last_played_row, last_player) >= 4) {
             return true;
         } else if (this.number_of_connects_vertically(column, last_played_row, last_player) >= 4) {
+            return true;
+        } else if (this.number_of_connects_diagonally_top_to_bottom(column, last_played_row, last_player) >= 4) {
             return true;
         } else {
             return false;
@@ -86,16 +87,54 @@ ConnectFourBoard.prototype = {
 
     number_of_connects_vertically: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
-
-        console.log(this.board);
-        console.log(last_played_row);
         for(var row_from_bottom = last_played_row - 1; row_from_bottom >= 0 && row_from_bottom > last_played_row - 4; row_from_bottom--) {
-            console.log(row_from_bottom);
-            if(this.board[column][last_played_row] === last_player) {
+            if(this.board[column][row_from_bottom] === last_player) {
                 number_of_connects++;
             } else {
                 break;
             }
+        }
+
+        return number_of_connects;
+    },
+
+    number_of_connects_diagonally_top_to_bottom: function (column, last_played_row, last_player) {
+        var number_of_connects = 1;
+
+        var column_from_bottom = column + 1 ;
+        var row_from_right = last_played_row - 1;
+
+        while ( column_from_bottom < 7 &&
+                    row_from_right >= 0 &&
+                        column_from_bottom < column + 4 &&
+                            row_from_right > last_played_row - 4 ) {
+
+            if(this.board[column_from_bottom][row_from_right] === last_player) {
+                number_of_connects++;
+            } else {
+                break;
+            }
+
+            column_from_bottom++;
+            row_from_right--;
+        }
+
+        var column_from_top = column - 1;
+        var row_from_left = last_played_row + 1;
+
+        while ( column_from_top >= 0 &&
+                    row_from_left < 6 &&
+                        column_from_top > column - 4 &&
+                            row_from_left < last_played_row + 4 ) {
+
+            if(this.board[column_from_top][row_from_left] === last_player) {
+                number_of_connects++;
+            } else {
+                break;
+            }
+
+            column_from_top--;
+            row_from_left++;
         }
 
         return number_of_connects;
