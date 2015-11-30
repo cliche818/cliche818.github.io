@@ -76,10 +76,18 @@ ConnectFourBoard.prototype = {
         return row >= 0 && row < 6;
     },
 
+    isDimensionWithinMaxRange: function (original_dimension, dimension) {
+        return dimension < original_dimension + 4 ;
+    },
+
+    isDimensionWithinMinRange: function (original_dimension, dimension) {
+        return dimension > original_dimension - 4;
+    },
+
     number_of_connects_horizontally: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
 
-        for (var column_from_left = column - 1; this.isColumnWithinLimit(column_from_left) && column - 4 < column_from_left; column_from_left--) {
+        for (var column_from_left = column - 1; this.isColumnWithinLimit(column_from_left) && this.isDimensionWithinMinRange(column, column_from_left) ; column_from_left--) {
             if (this.isPlayerDiscInSpot(column_from_left, last_played_row, last_player)) {
                 number_of_connects++;
             } else {
@@ -87,7 +95,7 @@ ConnectFourBoard.prototype = {
             }
         }
 
-        for (var column_from_right = column + 1; this.isColumnWithinLimit(column_from_right) && column + 4 > column_from_right; column_from_right++) {
+        for (var column_from_right = column + 1; this.isColumnWithinLimit(column_from_right) && this.isDimensionWithinMaxRange(column, column_from_right); column_from_right++) {
             if (this.isPlayerDiscInSpot(column_from_right, last_played_row, last_player)) {
                 number_of_connects++;
             } else {
@@ -99,7 +107,7 @@ ConnectFourBoard.prototype = {
 
     number_of_connects_vertically: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
-        for(var row_from_bottom = last_played_row - 1; this.isRowWithinLimit(row_from_bottom) && row_from_bottom > last_played_row - 4; row_from_bottom--) {
+        for(var row_from_bottom = last_played_row - 1; this.isRowWithinLimit(row_from_bottom) && this.isDimensionWithinMinRange(last_played_row, row_from_bottom); row_from_bottom--) {
             if(this.isPlayerDiscInSpot(column, row_from_bottom, last_player)) {
                 number_of_connects++;
             } else {
@@ -118,8 +126,8 @@ ConnectFourBoard.prototype = {
 
         while ( this.isColumnWithinLimit(column_from_left) &&
                     this.isRowWithinLimit(row_from_top) &&
-                        column_from_left < column + 4 &&
-                            row_from_top > last_played_row - 4 ) {
+                        this.isDimensionWithinMaxRange(column, column_from_left) &&
+                            this.isDimensionWithinMinRange(last_played_row, row_from_top) ){
 
             if(this.isPlayerDiscInSpot(column_from_left,row_from_top, last_player)) {
                 number_of_connects++;
@@ -136,8 +144,8 @@ ConnectFourBoard.prototype = {
 
         while ( this.isColumnWithinLimit(column_from_right) &&
                     this.isRowWithinLimit(row_from_bottom) &&
-                        column_from_right > column - 4 &&
-                            row_from_bottom < last_played_row + 4 ) {
+                        this.isDimensionWithinMinRange(column_from_right, column) &&
+                           this.isDimensionWithinMaxRange(row_from_bottom, last_played_row) ) {
 
             if(this.isPlayerDiscInSpot(column_from_right, row_from_bottom, last_player)) {
                 number_of_connects++;
