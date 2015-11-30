@@ -37,6 +37,10 @@ ConnectFourBoard.prototype = {
         return this.board[column][row] === not_filled ? false : true;
     },
 
+    isPlayerDiscInSpot: function (column, row, player) {
+        return this.board[column][row] === player;
+    },
+
     winner: function(column){
         var last_played_row;
 
@@ -68,7 +72,7 @@ ConnectFourBoard.prototype = {
         var number_of_connects = 1;
 
         for (var column_from_left = column - 1; column_from_left >= 0 && column - 4 < column_from_left; column_from_left--) {
-            if (this.board[column_from_left][last_played_row] === last_player) {
+            if (this.isPlayerDiscInSpot(column_from_left, last_played_row, last_player)) {
                 number_of_connects++;
             } else {
                 break;
@@ -76,7 +80,7 @@ ConnectFourBoard.prototype = {
         }
 
         for (var column_from_right = column + 1; column_from_right <= 6 && column + 4 > column_from_right; column_from_right++) {
-            if (this.board[column_from_right][last_played_row] === last_player) {
+            if (this.isPlayerDiscInSpot(column_from_right, last_played_row, last_player)) {
                 number_of_connects++;
             } else {
                 break;
@@ -88,7 +92,7 @@ ConnectFourBoard.prototype = {
     number_of_connects_vertically: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
         for(var row_from_bottom = last_played_row - 1; row_from_bottom >= 0 && row_from_bottom > last_played_row - 4; row_from_bottom--) {
-            if(this.board[column][row_from_bottom] === last_player) {
+            if(this.isPlayerDiscInSpot(column, row_from_bottom, last_player)) {
                 number_of_connects++;
             } else {
                 break;
@@ -101,40 +105,40 @@ ConnectFourBoard.prototype = {
     number_of_connects_diagonally_top_to_bottom: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
 
-        var column_from_bottom = column + 1 ;
-        var row_from_right = last_played_row - 1;
+        var column_from_left = column + 1 ;
+        var row_from_top = last_played_row - 1;
 
-        while ( column_from_bottom < 7 &&
-                    row_from_right >= 0 &&
-                        column_from_bottom < column + 4 &&
-                            row_from_right > last_played_row - 4 ) {
+        while ( column_from_left < 7 &&
+                    row_from_top >= 0 &&
+                        column_from_left < column + 4 &&
+                            row_from_top > last_played_row - 4 ) {
 
-            if(this.board[column_from_bottom][row_from_right] === last_player) {
+            if(this.isPlayerDiscInSpot(column_from_left,row_from_top, last_player)) {
                 number_of_connects++;
             } else {
                 break;
             }
 
-            column_from_bottom++;
-            row_from_right--;
+            column_from_left++;
+            row_from_top--;
         }
 
-        var column_from_top = column - 1;
-        var row_from_left = last_played_row + 1;
+        var column_from_right = column - 1;
+        var row_from_bottom = last_played_row + 1;
 
-        while ( column_from_top >= 0 &&
-                    row_from_left < 6 &&
-                        column_from_top > column - 4 &&
-                            row_from_left < last_played_row + 4 ) {
+        while ( column_from_right >= 0 &&
+                    row_from_bottom < 6 &&
+                        column_from_right > column - 4 &&
+                            row_from_bottom < last_played_row + 4 ) {
 
-            if(this.board[column_from_top][row_from_left] === last_player) {
+            if(this.isPlayerDiscInSpot(column_from_right,row_from_bottom, last_player)) {
                 number_of_connects++;
             } else {
                 break;
             }
 
-            column_from_top--;
-            row_from_left++;
+            column_from_right--;
+            row_from_bottom++;
         }
 
         return number_of_connects;
