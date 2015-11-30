@@ -1,0 +1,3 @@
+describe("Win Detector", function(){
+
+});

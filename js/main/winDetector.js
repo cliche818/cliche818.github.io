@@ -1,0 +1,6 @@
+function WinDetector() {
+}
+
+WinDetector.prototype = {
+
+}
