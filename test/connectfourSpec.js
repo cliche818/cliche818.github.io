@@ -88,6 +88,15 @@ describe("Connect Four Board", function () {
                expect(connectFourBoard.winner(0)).toBe(true);
 
            });
+
+           it("should return true when there is diagonal going bottom to top of 4", function() {
+               connectFourBoard.board = [ [1,0,0,0,0,0], [2,1,0,0,0,0], [2,2,1,0,0,0], [2,2,2,1,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0]];
+
+               expect(connectFourBoard.winner(3)).toBe(true);
+               expect(connectFourBoard.winner(2)).toBe(true);
+               expect(connectFourBoard.winner(1)).toBe(true);
+               expect(connectFourBoard.winner(0)).toBe(true);
+           });
        });
 
     });

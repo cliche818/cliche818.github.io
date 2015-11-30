@@ -63,6 +63,8 @@ ConnectFourBoard.prototype = {
             return true;
         } else if (this.number_of_connects_diagonally_top_to_bottom(column, last_played_row, last_player) >= 4) {
             return true;
+        } else if (this.number_of_connects_diagonally_bottom_to_top(column, last_played_row, last_player) >= 4) {
+            return true;
         } else {
             return false;
         }
@@ -121,7 +123,7 @@ ConnectFourBoard.prototype = {
     number_of_connects_diagonally_top_to_bottom: function (column, last_played_row, last_player) {
         var number_of_connects = 1;
 
-        var column_from_left = column + 1 ;
+        var column_from_left = column + 1;
         var row_from_top = last_played_row - 1;
 
         while ( this.isColumnWithinLimit(column_from_left) &&
@@ -155,6 +157,48 @@ ConnectFourBoard.prototype = {
 
             column_from_right--;
             row_from_bottom++;
+        }
+
+        return number_of_connects;
+    },
+
+    number_of_connects_diagonally_bottom_to_top: function (column, last_played_row, last_player) {
+        var number_of_connects = 1;
+
+        var column_from_left = column - 1;
+        var row_from_bottom = last_played_row - 1;
+
+        while ( this.isColumnWithinLimit(column_from_left) &&
+                    this.isRowWithinLimit(row_from_bottom) &&
+                        this.isDimensionWithinMinRange(column, column_from_left) &&
+                            this.isDimensionWithinMinRange(last_played_row, row_from_bottom) ){
+
+            if(this.isPlayerDiscInSpot(column_from_left,row_from_bottom, last_player)) {
+                number_of_connects++;
+            } else {
+                break;
+            }
+
+            column_from_left--;
+            row_from_bottom--;
+        }
+
+        var column_from_right = column + 1;
+        var row_from_top = last_played_row + 1;
+
+        while ( this.isColumnWithinLimit(column_from_right) &&
+        this.isRowWithinLimit(row_from_top) &&
+        this.isDimensionWithinMaxRange(column, column_from_right) &&
+        this.isDimensionWithinMaxRange(last_played_row, row_from_top) ){
+
+            if(this.isPlayerDiscInSpot(column_from_right,row_from_top, last_player)) {
+                number_of_connects++;
+            } else {
+                break;
+            }
+
+            column_from_right++;
+            row_from_top++;
         }
 
         return number_of_connects;
