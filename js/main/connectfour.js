@@ -1,5 +1,6 @@
 function ConnectFourBoard() {
     this.board = initializeBoard();
+    this.playerOne = true;
 }
 
 var not_filled = 0;
@@ -32,6 +33,10 @@ ConnectFourBoard.prototype = {
                 break;
             }
         }
+    },
+
+    changePlayer: function(){
+        this.playerOne = !this.playerOne;
     },
 
     availableSpotInColumn: function(column) {

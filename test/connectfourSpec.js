@@ -30,19 +30,19 @@ describe("Connect Four Board", function () {
 
     });
 
-    describe("#availableSpotInColumn", function() {
-        it('should return 0 for an empty column', function() {
+    describe("#availableSpotInColumn", function () {
+        it('should return 0 for an empty column', function () {
             expect(connectFourBoard.availableSpotInColumn(0)).toBe(0);
         });
 
-        it('should return 2 for a column filled in twice already', function() {
+        it('should return 2 for a column filled in twice already', function () {
             connectFourBoard.addDisc(0, 1);
             connectFourBoard.addDisc(0, 1);
             expect(connectFourBoard.availableSpotInColumn(0)).toBe(2);
         });
 
-        it('should return -1 if a column is filled to the max', function() {
-            for(var row = 0; row < 6; row++) {
+        it('should return -1 if a column is filled to the max', function () {
+            for (var row = 0; row < 6; row++) {
                 connectFourBoard.addDisc(0, 1);
             }
 
@@ -57,6 +57,20 @@ describe("Connect Four Board", function () {
                 expect(connectFourBoard.isFilled(column, 0)).toBe(true);
                 expect(connectFourBoard.isFilled(column, 1)).toBe(false);
             }
+        });
+    });
+
+
+    describe("#currentPlayer", function () {
+        it("should change the current player to someone else", function () {
+            connectFourBoard.changePlayer();
+            expect(connectFourBoard.playerOne).toBe(false);
+        });
+
+        it("should be back to player one's turn at the third turn", function () {
+            connectFourBoard.changePlayer();
+            connectFourBoard.changePlayer();
+            expect(connectFourBoard.playerOne).toBe(true);
         });
     });
 

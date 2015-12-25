@@ -35,6 +35,11 @@ function addDisc(column) {
 
     if(availableSpot != -1) {
         connectFour.addDisc(column, 1);
-        $('.column-'+ column + ' .row-' + availableSpot).addClass('player-1-color');
+
+        currentPlayer = connectFour.playerOne ? 1 : 2;
+
+        $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + currentPlayer + '-color');
+
+        connectFour.changePlayer();
     }
 }
