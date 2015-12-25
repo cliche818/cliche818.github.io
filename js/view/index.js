@@ -36,10 +36,14 @@ function addDisc(column) {
     if(availableSpot != -1) {
         connectFour.addDisc(column, 1);
 
-        currentPlayer = connectFour.playerOne ? 1 : 2;
+        $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + connectFour.currentPlayer() + '-color');
 
-        $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + currentPlayer + '-color');
+        if (connectFour.winner(column)) {
+            $('.ingame-message').text('There is a WINNER!');
+        } else {
+            connectFour.changePlayer();
+            $('.ingame-message').text('Player' + connectFour.currentPlayer() + '\'s turn');
+        }
 
-        connectFour.changePlayer();
     }
 }

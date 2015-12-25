@@ -39,6 +39,10 @@ ConnectFourBoard.prototype = {
         this.playerOne = !this.playerOne;
     },
 
+    currentPlayer: function() {
+        return this.playerOne ? 1 : 2;
+    },
+
     availableSpotInColumn: function(column) {
         for (var row = 0; row < row_size; row++) {
             if(!this.isFilled(column, row)) {

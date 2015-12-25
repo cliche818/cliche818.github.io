@@ -61,7 +61,7 @@ describe("Connect Four Board", function () {
     });
 
 
-    describe("#currentPlayer", function () {
+    describe("#changePlayer", function () {
         it("should change the current player to someone else", function () {
             connectFourBoard.changePlayer();
             expect(connectFourBoard.playerOne).toBe(false);
@@ -71,6 +71,17 @@ describe("Connect Four Board", function () {
             connectFourBoard.changePlayer();
             connectFourBoard.changePlayer();
             expect(connectFourBoard.playerOne).toBe(true);
+        });
+    });
+
+    describe("#currentPlayer", function () {
+        it("should return the current player number", function () {
+            expect(connectFourBoard.currentPlayer()).toBe(1);
+        });
+
+        it("should return the current player number after a turn", function () {
+            connectFourBoard.changePlayer();
+            expect(connectFourBoard.currentPlayer()).toBe(2);
         });
     });
 
