@@ -3,10 +3,11 @@ function ConnectFourBoard() {
 }
 
 var not_filled = 0;
+var row_size = 6;
+var column_size = 7;
 
 function initializeBoard() {
-    var row_size = 6;
-    var column_size = 7;
+
     var board = new Array(column_size);
 
     for(var i = 0; i < column_size; i++) {
@@ -31,6 +32,16 @@ ConnectFourBoard.prototype = {
                 break;
             }
         }
+    },
+
+    availableSpotInColumn: function(column) {
+        for (var row = 0; row < row_size; row++) {
+            if(!this.isFilled(column, row)) {
+                return row;
+            }
+        }
+
+        return -1;
     },
 
     isFilled: function(column, row){

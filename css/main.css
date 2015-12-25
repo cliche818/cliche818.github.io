@@ -1,6 +1,6 @@
 header .intro-text .nickname {
     display: block;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 2em;
     font-weight: 500;
 }
@@ -8,4 +8,17 @@ header .intro-text .nickname {
 header .profile-pic {
     border-radius: 15px 50px;
     max-height: 200px;
+}
+
+#connect-four .hole-spot {
+    border: 1px solid black;
+    height: 50px;
+}
+
+#connect-four .player-1-color {
+    background-color: red;
+}
+
+#connect-four .player-2-color {
+    background-color: blue;
 }
