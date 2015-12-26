@@ -9,7 +9,6 @@ $(function() {
 
 function bindAddDiscToColumn(column) {
     $('.column-' + column).on('click', function () {
-        console.log(column);
         addDisc(column);
     });
 }
