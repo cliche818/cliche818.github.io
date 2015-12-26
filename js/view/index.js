@@ -1,34 +1,18 @@
 $(function() {
     connectFour = new ConnectFourBoard();
 
-    $('.column-0').on('click', function() {
-        addDisc(0);
-    });
+    for(var column = 0; column < 7; column++) {
+        bindAddDiscToColumn(column);
+    }
 
-    $('.column-1').on('click', function() {
-        addDisc(1);
-    });
-
-    $('.column-2').on('click', function() {
-        addDisc(2);
-    });
-
-    $('.column-3').on('click', function() {
-        addDisc(3);
-    });
-
-    $('.column-4').on('click', function() {
-        addDisc(4);
-    });
-
-    $('.column-5').on('click', function() {
-        addDisc(5);
-    });
-
-    $('.column-6').on('click', function() {
-        addDisc(6);
-    });
 });
+
+function bindAddDiscToColumn(column) {
+    $('.column-' + column).on('click', function () {
+        console.log(column);
+        addDisc(column);
+    });
+}
 
 function endGame() {
     $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
