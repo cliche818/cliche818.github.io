@@ -24,6 +24,10 @@ header .profile-pic {
     display: inline-block;
 }
 
+#connect-four .ingame-message {
+    font-weight: bold;
+}
+
 #connect-four .player-1-color {
     background-color: #18BC9C;
 }
