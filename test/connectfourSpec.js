@@ -90,13 +90,13 @@ describe("Connect Four Board", function () {
         describe("if there is no winner from last play", function () {
             it("should return false at the beginning of a match", function () {
                 for (var column in [0, 1, 2, 3, 4, 5, 6]) {
-                    expect(connectFourBoard.winner(column)).toBe(false);
+                    expect(connectFourBoard.winner(column)).toBe(-1);
                 }
             });
 
             it("should return false after a play", function () {
                 connectFourBoard.addDisc(1, 1);
-                expect(connectFourBoard.winner(1)).toBe(false);
+                expect(connectFourBoard.winner(1)).toBe(-1);
             });
         });
 
@@ -108,10 +108,10 @@ describe("Connect Four Board", function () {
                 connectFourBoard.addDisc(3, 1);
                 connectFourBoard.addDisc(4, 1);
 
-                expect(connectFourBoard.winner(4)).toBe(true);
-                expect(connectFourBoard.winner(3)).toBe(true);
-                expect(connectFourBoard.winner(2)).toBe(true);
-                expect(connectFourBoard.winner(1)).toBe(true);
+                expect(connectFourBoard.winner(4)).toBe(1);
+                expect(connectFourBoard.winner(3)).toBe(1);
+                expect(connectFourBoard.winner(2)).toBe(1);
+                expect(connectFourBoard.winner(1)).toBe(1);
             });
 
             it("should return true when there is a vertical of 4", function () {
@@ -120,26 +120,26 @@ describe("Connect Four Board", function () {
                 connectFourBoard.addDisc(1, 1);
                 connectFourBoard.addDisc(1, 1);
 
-                expect(connectFourBoard.winner(1)).toBe(true);
+                expect(connectFourBoard.winner(1)).toBe(1);
             });
 
             it("should return true when there is diagonal going top to bottom of 4", function () {
                 connectFourBoard.board = [[2, 2, 2, 1, 0, 0], [2, 2, 1, 0, 0, 0], [2, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
 
-                expect(connectFourBoard.winner(3)).toBe(true);
-                expect(connectFourBoard.winner(2)).toBe(true);
-                expect(connectFourBoard.winner(1)).toBe(true);
-                expect(connectFourBoard.winner(0)).toBe(true);
+                expect(connectFourBoard.winner(3)).toBe(1);
+                expect(connectFourBoard.winner(2)).toBe(1);
+                expect(connectFourBoard.winner(1)).toBe(1);
+                expect(connectFourBoard.winner(0)).toBe(1);
 
             });
 
             it("should return true when there is diagonal going bottom to top of 4", function () {
                 connectFourBoard.board = [[1, 0, 0, 0, 0, 0], [2, 1, 0, 0, 0, 0], [2, 2, 1, 0, 0, 0], [2, 2, 2, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
 
-                expect(connectFourBoard.winner(3)).toBe(true);
-                expect(connectFourBoard.winner(2)).toBe(true);
-                expect(connectFourBoard.winner(1)).toBe(true);
-                expect(connectFourBoard.winner(0)).toBe(true);
+                expect(connectFourBoard.winner(3)).toBe(1);
+                expect(connectFourBoard.winner(2)).toBe(1);
+                expect(connectFourBoard.winner(1)).toBe(1);
+                expect(connectFourBoard.winner(0)).toBe(1);
             });
         });
 

@@ -38,8 +38,9 @@ function addDisc(column) {
 
         $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + connectFour.currentPlayer() + '-color');
 
-        if (connectFour.winner(column)) {
-            $('.ingame-message').text('There is a WINNER!');
+
+        if (connectFour.winner(column) != -1) {
+            $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
         } else {
             connectFour.changePlayer();
             $('.ingame-message').text('Player' + connectFour.currentPlayer() + '\'s turn');

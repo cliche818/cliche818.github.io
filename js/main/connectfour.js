@@ -72,21 +72,21 @@ ConnectFourBoard.prototype = {
         }
 
         if (last_played_row === undefined) {
-            return false;
+            return -1;
         }
 
         var last_player = this.board[column][last_played_row];
 
         if (this.number_of_connects_horizontally(column, last_played_row, last_player) >= 4) {
-            return true;
+            return last_player;
         } else if (this.number_of_connects_vertically(column, last_played_row, last_player) >= 4) {
-            return true;
+            return last_player;
         } else if (this.number_of_connects_diagonally_top_to_bottom(column, last_played_row, last_player) >= 4) {
-            return true;
+            return last_player;
         } else if (this.number_of_connects_diagonally_bottom_to_top(column, last_played_row, last_player) >= 4) {
-            return true;
+            return last_player;
         } else {
-            return false;
+            return -1;
         }
     },
 
