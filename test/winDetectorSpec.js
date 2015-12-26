@@ -1,3 +1,0 @@
-describe("Win Detector", function(){
-
-});
