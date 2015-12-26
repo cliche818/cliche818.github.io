@@ -30,6 +30,17 @@ $(function() {
     });
 });
 
+function endGame() {
+    $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
+    $('.column-0').off();
+    $('.column-1').off();
+    $('.column-2').off();
+    $('.column-3').off();
+    $('.column-4').off();
+    $('.column-5').off();
+    $('.column-6').off();
+}
+
 function addDisc(column) {
     availableSpot = connectFour.availableSpotInColumn(column);
 
@@ -40,7 +51,8 @@ function addDisc(column) {
 
 
         if (connectFour.winner(column) != -1) {
-            $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
+            endGame();
+
         } else {
             connectFour.changePlayer();
             $('.ingame-message').text('Player' + connectFour.currentPlayer() + '\'s turn');
