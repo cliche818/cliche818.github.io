@@ -15,6 +15,15 @@ header .profile-pic {
     height: 50px;
 }
 
+#connect-four .centered {
+    text-align: center;
+}
+
+#connect-four .centered > div {
+    float: none;
+    display: inline-block;
+}
+
 #connect-four .player-1-color {
     background-color: red;
 }
@@ -22,3 +31,4 @@ header .profile-pic {
 #connect-four .player-2-color {
     background-color: blue;
 }
+
