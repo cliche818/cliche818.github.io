@@ -15,6 +15,7 @@ function bindAddDiscToColumn(column) {
 }
 
 function endGame() {
+    console.log(connectFour.board);
     $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
     $('.column-0').off();
     $('.column-1').off();
@@ -29,7 +30,7 @@ function addDisc(column) {
     availableSpot = connectFour.availableSpotInColumn(column);
 
     if(availableSpot != -1) {
-        connectFour.addDisc(column, 1);
+        connectFour.addDisc(column, connectFour.currentPlayer());
 
         $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + connectFour.currentPlayer() + '-color');
 
