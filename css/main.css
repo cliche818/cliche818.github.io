@@ -25,10 +25,10 @@ header .profile-pic {
 }
 
 #connect-four .player-1-color {
-    background-color: red;
+    background-color: #18BC9C;
 }
 
 #connect-four .player-2-color {
-    background-color: blue;
+    background-color: #2C3E50;
 }
 
