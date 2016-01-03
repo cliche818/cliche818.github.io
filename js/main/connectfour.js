@@ -1,30 +1,27 @@
 function ConnectFourBoard() {
-    this.board = initializeBoard();
     this.playerOne = true;
-}
+    this.not_filled = 0;
+    this.row_size =  6;
+    this.column_size = 7;
+    this.initializeBoard = function() {
+        var board = new Array(this.column_size);
 
-var not_filled = 0;
-var row_size = 6;
-var column_size = 7;
+        for(var i = 0; i < this.column_size; i++) {
+            board[i] = new Array(this.row_size);
 
-function initializeBoard() {
-
-    var board = new Array(column_size);
-
-    for(var i = 0; i < column_size; i++) {
-        board[i] = new Array(row_size);
-
-        for(var j = 0; j < row_size; j++) {
-            board[i][j] = not_filled;
+            for(var j = 0; j < this.row_size; j++) {
+                board[i][j] = this.not_filled;
+            }
         }
-    }
-    return board;
+        return board;
+    };
+
+    this.board = this.initializeBoard();
 }
 
 ConnectFourBoard.prototype = {
-    constructor: function(){
-        this.board = initializeBoard();
-    },
+
+    constructor: ConnectFourBoard(),
 
     addDisc: function(column, player) {
         for (var row in [0,1,2,3,4,5,6]) {
@@ -44,7 +41,7 @@ ConnectFourBoard.prototype = {
     },
 
     availableSpotInColumn: function(column) {
-        for (var row = 0; row < row_size; row++) {
+        for (var row = 0; row < this.row_size; row++) {
             if(!this.isFilled(column, row)) {
                 return row;
             }
@@ -54,7 +51,7 @@ ConnectFourBoard.prototype = {
     },
 
     isFilled: function(column, row){
-        return this.board[column][row] === not_filled ? false : true;
+        return this.board[column][row] !== this.not_filled;
     },
 
     isPlayerDiscInSpot: function (column, row, player) {
