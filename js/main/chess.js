@@ -7,19 +7,19 @@ function Chess() {
 }
 
 Chess.prototype = {
-    placePiece : function(piece, row, column) {
-        this.board[row][column] = piece;
-        piece.row = row;
-        piece.column = column;
+    placePiece : function(piece, x, y) {
+        this.board[x][y] = piece;
+        piece.x = x;
+        piece.y = y;
     },
 
-    movePiece : function(piece, row, column) {
+    movePiece : function(piece, destination_x, destination_y) {
 
-        if(piece.validMove(row, column)) {
-            this.board[piece.row][piece.column] = undefined;
-            this.board[row][column] = piece;
-            piece.row = row;
-            piece.column = column;
+        if(piece.validMove(destination_x, destination_y)) {
+            this.board[piece.x][piece.y] = undefined;
+            this.board[destination_x][destination_y] = piece;
+            piece.x = destination_x;
+            piece.y = destination_y;
         }
 
     }

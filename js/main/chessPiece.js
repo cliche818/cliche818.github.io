@@ -1,6 +1,6 @@
 function ChessPiece() {
-    this.row = null;
-    this.column = null;
+    this.x = null;
+    this.y = null;
 }
 
 ChessPiece.prototype = {
