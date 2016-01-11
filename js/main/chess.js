@@ -15,7 +15,7 @@ Chess.prototype = {
 
     movePiece : function(piece, row, column) {
 
-        if((piece.row - row === -1) || (piece.column - column) === -1) {
+        if(piece.validMove(row, column)) {
             this.board[piece.row][piece.column] = undefined;
             this.board[row][column] = piece;
             piece.row = row;

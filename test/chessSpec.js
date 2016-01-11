@@ -21,14 +21,14 @@ describe('Chess Game', function () {
         describe('king', function () {
             var king;
             beforeEach(function(){
-                king = new ChessPiece('king');
+                king = new King();
                 chess.placePiece(king, 0, 4);
             });
 
             it('should move a king one spot forward', function () {
                 chess.movePiece(king, 1, 4);
                 expect(chess.board[0][4]).toBe(undefined);
-                expect(chess.board[1][4]).toBe(king);
+                expect(chess.board[1][4] instanceof King).toBe(true);
                 expect(king.row).toBe(1);
                 expect(king.column).toBe(4);
             });
@@ -36,7 +36,7 @@ describe('Chess Game', function () {
             it('should not move a king two spot forward', function () {
                 chess.movePiece(king, 2, 4);
                 expect(chess.board[2][4]).toBe(undefined);
-                expect(chess.board[0][4]).toBe(king);
+                expect(chess.board[0][4] instanceof King).toBe(true);
             });
 
         })
