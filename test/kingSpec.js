@@ -31,8 +31,21 @@ describe('king', function () {
         });
 
         describe('should return false', function() {
-            xit('given an invalid vertical destination coordinate', function() {
+            it('given an invalid vertical destination coordinate', function() {
+                expect(king.validMove(1, 5)).toBe(false);
+                expect(king.validMove(1, 3)).toBe(false);
+            });
 
+            it('given an invalid horizontal destination coordinate', function() {
+                expect(king.validMove(5, 1)).toBe(false);
+                expect(king.validMove(3, 1)).toBe(false);
+            });
+
+            it('given a valid diagonal destination coordinate', function () {
+                expect(king.validMove(3, 3)).toBe(false);
+                expect(king.validMove(4, 4)).toBe(false);
+                expect(king.validMove(3, 0)).toBe(false);
+                expect(king.validMove(0, 3)).toBe(false);
             });
         });
 

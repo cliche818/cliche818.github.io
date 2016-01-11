@@ -13,13 +13,13 @@ Chess.prototype = {
         piece.y = y;
     },
 
-    movePiece : function(piece, destination_x, destination_y) {
+    movePiece : function(piece, destinationX, destinationY) {
 
-        if(piece.validMove(destination_x, destination_y)) {
+        if(piece.validMove(destinationX, destinationY)) {
             this.board[piece.x][piece.y] = undefined;
-            this.board[destination_x][destination_y] = piece;
-            piece.x = destination_x;
-            piece.y = destination_y;
+            this.board[destinationX][destinationY] = piece;
+            piece.x = destinationX;
+            piece.y = destinationY;
         }
 
     }
