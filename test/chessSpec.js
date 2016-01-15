@@ -18,6 +18,25 @@ describe('Chess Game', function () {
     });
 
     describe('movePiece', function () {
+
+        describe('general piece', function() {
+            beforeEach(function(){
+                chessPiece1 = new ChessPiece();
+                chessPiece2 = new ChessPiece();
+                chess.placePiece(chessPiece1, 0, 4);
+                chess.placePiece(chessPiece2, 1, 4);
+
+            });
+
+            it('should not be able to move a chess piece to a preoccupied spot', function() {
+                chess.movePiece(chessPiece1, 1, 4);
+                expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
+                expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
+
+            });
+
+        });
+
         describe('king', function () {
             var king;
             beforeEach(function(){

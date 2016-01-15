@@ -14,7 +14,6 @@ function bindAddDiscToColumn(column) {
 }
 
 function endGame() {
-    console.log(connectFour.board);
     $('.ingame-message').text('Winner: Player ' + connectFour.currentPlayer());
     $('.column-0').off();
     $('.column-1').off();
