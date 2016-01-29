@@ -5,8 +5,11 @@ function King() {
 King.prototype = new ChessPiece();
 
 King.prototype.validMove = function(destinationX, destinationY) {
-        var xDifference = Math.abs(this.x - destinationX);
-        var yDifference = Math.abs(this.y - destinationY);
+        var x = this.coordinate.x;
+        var y = this.coordinate.y;
+
+        var xDifference = Math.abs(x - destinationX);
+        var yDifference = Math.abs(y - destinationY);
         var baseRuleValid = ChessPiece.prototype.validMove.call(this,destinationX, destinationY );
-        return baseRuleValid && ( ( xDifference === 1 && destinationY === this.y) || (yDifference === 1 && destinationX === this.x) || (xDifference === 1 && yDifference === 1) );
+        return baseRuleValid && ( ( xDifference === 1 && destinationY === y) || (yDifference === 1 && destinationX === x) || (xDifference === 1 && yDifference === 1) );
     };

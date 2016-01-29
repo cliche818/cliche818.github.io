@@ -1,6 +1,5 @@
 function ChessPiece() {
-    this.x = null;
-    this.y = null;
+    this.coordinate = new Coordinate();
 }
 
 ChessPiece.prototype = {
@@ -9,6 +8,6 @@ ChessPiece.prototype = {
     },
 
     samePosition: function(x, y) {
-        return (x === this.x && y === this.y);
+        return (x === this.coordinate.x && y === this.coordinate.y);
     }
 };

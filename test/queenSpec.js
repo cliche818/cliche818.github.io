@@ -7,8 +7,10 @@ describe('Queen', function () {
 
     describe('validMove', function () {
         beforeEach(function () {
-            queen.x = 4;
-            queen.y = 4;
+            coordinate = new Coordinate();
+            queen.coordinate = coordinate;
+            coordinate.x = 4;
+            coordinate.y = 4;
         });
 
         describe('provide a list of coordinates of steps to its destination', function () {

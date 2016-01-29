@@ -8,8 +8,10 @@ describe('Chess Piece', function () {
 
     describe('valid move', function () {
         beforeEach(function () {
-            chessPiece.x = 1;
-            chessPiece.y = 1;
+            var coordinate = new Coordinate();
+            coordinate.x = 1;
+            coordinate.y = 1;
+            chessPiece.coordinate = coordinate;
         });
 
         it('should return false when given out of board coordinates', function () {

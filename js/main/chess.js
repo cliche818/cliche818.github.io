@@ -9,17 +9,20 @@ function Chess() {
 Chess.prototype = {
     placePiece : function(piece, x, y) {
         this.board[x][y] = piece;
-        piece.x = x;
-        piece.y = y;
+        coordinate = piece.coordinate;
+        coordinate.x = x;
+        coordinate.y = y;
     },
 
     movePiece : function(piece, destinationX, destinationY) {
         if(this.board[destinationX][destinationY] == null) {
             if (piece.validMove(destinationX, destinationY)) {
-                this.board[piece.x][piece.y] = undefined;
+
+                coordinate = piece.coordinate;
+                this.board[coordinate.x][coordinate.y] = undefined;
                 this.board[destinationX][destinationY] = piece;
-                piece.x = destinationX;
-                piece.y = destinationY;
+                coordinate.x = destinationX;
+                coordinate.y = destinationY;
             }
         }
     }
