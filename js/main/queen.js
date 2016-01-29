@@ -18,6 +18,8 @@ Queen.prototype.path = function (destinationX, destinationY) {
         this.vertical_path(destinationX, destinationY, path)
     } else if ((destinationY - y) !== 0 && destinationX === x) {
         this.horizontal_path(destinationX, destinationY, path)
+    } else {
+        this.diagonal_path(destinationX, destinationY, path)
     }
     return path;
 };
@@ -56,4 +58,32 @@ Queen.prototype.horizontal_path = function (destinationX, destinationY, path) {
             y_step -= 1;
         }
     }
+};
+
+Queen.prototype.diagonal_path = function( destinationX, destinationY, path) {
+    this.try_top_right_diagonal_path(destinationX, destinationY, path)
+
+};
+
+Queen.prototype.try_top_right_diagonal_path = function( destinationX, destinationY, path) {
+    var x = this.coordinate.x;
+    var y = this.coordinate.y;
+
+    var x_step = x - 1;
+    var y_step = y - 1;
+
+    var possible_path = [];
+
+    while (destinationX <= x_step && destinationY <= y_step) {
+        if (x_step == destinationX && y_step == destinationY) {
+            path.push(possible_path);
+        } else {
+            possible_path.push([x_step, y_step]);
+        }
+
+        x_step -= 1;
+        y_step -= 1;
+    }
+
+    return path;
 };

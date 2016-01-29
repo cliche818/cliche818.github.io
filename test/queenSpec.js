@@ -23,6 +23,13 @@ describe('Queen', function () {
                 expect(queen.path(4, 7)).toEqual([[4, 5], [4, 6]]);
                 expect(queen.path(7, 4)).toEqual([[5, 4], [6, 4]]);
             });
+
+            describe('going diagonally', function(){
+
+                it('top left', function(){
+                   expect(queen.path(1,1)).toEqual([3,3], [2,2]);
+                });
+            });
         });
 
 
