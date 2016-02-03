@@ -1,0 +1,25 @@
+#chess .coordinate {
+    border: 1px solid black;
+    height: 50px;
+}
+
+#chess .centered {
+    text-align: center;
+}
+
+#chess .centered > div {
+    float: none;
+    display: inline-block;
+}
+
+#chess .row-label {
+    font-size: 65px;
+}
+
+#chess .ingame-message {
+    font-weight: bold;
+}
+
+#chess .white-king-piece {
+    background-color: #0b97c4;
+}
