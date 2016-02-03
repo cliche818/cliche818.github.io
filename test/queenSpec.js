@@ -25,9 +25,8 @@ describe('Queen', function () {
             });
 
             describe('going diagonally', function(){
-
                 it('top left', function(){
-                   expect(queen.path(1,1)).toEqual([3,3], [2,2]);
+                   expect(queen.path(1,1)).toEqual([[3,3], [2,2]]);
                 });
             });
         });
