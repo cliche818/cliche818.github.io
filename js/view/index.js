@@ -51,10 +51,13 @@ function addDisc(column) {
 $(function() {
     /* set up chess board with chess piece */
     var chess = new Chess();
-    var king = new King();
-    chess.placePiece(king, 3, 0);
+    var whiteKing = new King();
+    var blackKing = new King();
+    chess.placePiece(whiteKing, 3, 0);
+    chess.placePiece(blackKing, 3, 7);
 
     $('#chess .row-0 .column-3').addClass('white-king-piece');
+    $('#chess .row-7 .column-3').addClass('white-king-piece');
 
     /* initialize every grid spot with interactive click events */
     var selectingPiece = true;
@@ -73,18 +76,19 @@ $(function() {
                 console.log(x);
 
                 if (selectingPiece) {
-                    currentSelectedPiece = king;
+                    console.log(chess.board);
+                    currentSelectedPiece = chess.board[x][y];
                     selectingPiece = false;
-                    $('#chess .ingame-message').text('Move Piece');
+                    $('#chess .ingame-message').text('Move Piece: ' + currentSelectedPiece.name);
                 } else {
 
                     if (currentSelectedPiece.validMove(x, y)) {
                         console.log('Moving Piece');
-                        console.log('King column:' + king.coordinate.y + ' row:' + king.coordinate.x);
-                        $('#chess .row-' + king.coordinate.y + ' .column-' + king.coordinate.x).removeClass('white-king-piece');//remove piece from previous position
-                        chess.movePiece(king, x, y);
+                        console.log('King column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
 
-                        $('#chess .row-' + king.coordinate.y + ' .column-' + king.coordinate.x).addClass('white-king-piece');//add piece to new position
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass('white-king-piece');//remove piece from previous position
+                        chess.movePiece(currentSelectedPiece, x, y);
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass('white-king-piece');//add piece to new position
 
                         selectingPiece = true;
                         $('#chess .ingame-message').text('Select Piece');
