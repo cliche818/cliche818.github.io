@@ -14,6 +14,10 @@ describe('Chess Piece', function () {
             chessPiece.coordinate = coordinate;
         });
 
+        it('should return true when given a coordinate', function() {
+           expect(chessPiece.validMove(3,4)).toBe(true);
+        });
+
         it('should return false when given out of board coordinates', function () {
             expect(chessPiece.validMove(-1, 0)).toBe(false);
             expect(chessPiece.validMove(0, -1)).toBe(false);

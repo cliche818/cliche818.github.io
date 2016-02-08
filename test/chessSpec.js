@@ -67,4 +67,10 @@ describe('Chess Game', function () {
 
     });
 
+    describe('kill', function() {
+        var whiteKing;
+        var blackKing;
+
+    });
+
 });

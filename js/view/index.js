@@ -51,13 +51,13 @@ function addDisc(column) {
 $(function() {
     /* set up chess board with chess piece */
     var chess = new Chess();
-    var whiteKing = new King();
-    var blackKing = new King();
+    var whiteKing = new King('white');
+    var blackKing = new King('black');
     chess.placePiece(whiteKing, 3, 0);
     chess.placePiece(blackKing, 3, 7);
 
-    $('#chess .row-0 .column-3').addClass('white-king-piece');
-    $('#chess .row-7 .column-3').addClass('white-king-piece');
+    $('#chess .row-0 .column-3').addClass(ChessPieceCSSClass(whiteKing));
+    $('#chess .row-7 .column-3').addClass(ChessPieceCSSClass(blackKing));
 
     /* initialize every grid spot with interactive click events */
     var selectingPiece = true;
@@ -86,9 +86,11 @@ $(function() {
                         console.log('Moving Piece');
                         console.log('King column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
 
-                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass('white-king-piece');//remove piece from previous position
+                        var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
+
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(chessPieceCSSClass);//remove piece from previous position
                         chess.movePiece(currentSelectedPiece, x, y);
-                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass('white-king-piece');//add piece to new position
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);//add piece to new position
 
                         selectingPiece = true;
                         $('#chess .ingame-message').text('Select Piece');
@@ -98,3 +100,7 @@ $(function() {
         }
     }
 });
+
+function ChessPieceCSSClass(chessPiece) {
+    return  chessPiece.team + '-' + chessPiece.name + '-piece';
+}

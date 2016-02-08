@@ -1,6 +1,7 @@
-function King() {
+function King(team) {
     ChessPiece.call(this);
-    this.name = 'King';
+    this.name = 'king';
+    this.team = team;
 }
 
 King.prototype = new ChessPiece();
