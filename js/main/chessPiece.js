@@ -1,5 +1,6 @@
-function ChessPiece() {
+function ChessPiece(team) {
     this.coordinate = new Coordinate();
+    this.team = team;
 }
 
 ChessPiece.prototype = {
@@ -9,5 +10,8 @@ ChessPiece.prototype = {
 
     samePosition: function(x, y) {
         return (x === this.coordinate.x && y === this.coordinate.y);
+    },
+    isSameTeam: function(team) {
+        return this.team == team;
     }
 };

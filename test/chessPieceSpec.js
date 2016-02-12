@@ -2,7 +2,7 @@ describe('Chess Piece', function () {
     var chessPiece;
 
     beforeEach(function () {
-        chessPiece = new ChessPiece();
+        chessPiece = new ChessPiece('white');
 
     });
 
@@ -14,8 +14,8 @@ describe('Chess Piece', function () {
             chessPiece.coordinate = coordinate;
         });
 
-        it('should return true when given a coordinate', function() {
-           expect(chessPiece.validMove(3,4)).toBe(true);
+        it('should return true when given a coordinate', function () {
+            expect(chessPiece.validMove(3, 4)).toBe(true);
         });
 
         it('should return false when given out of board coordinates', function () {
@@ -25,6 +25,16 @@ describe('Chess Piece', function () {
 
         it('should return false when given the same coordinate it is currently on', function () {
             expect(chessPiece.validMove(1, 1)).toBe(false);
+        });
+    });
+
+    describe('isSameTeam', function () {
+        it('should return true if same team', function () {
+            expect(chessPiece.isSameTeam('white')).toBe(true);
+        });
+
+        it('should return false if different team', function() {
+            expect(chessPiece.isSameTeam('black')).toBe(false);
         });
     });
 });

@@ -16,8 +16,16 @@ Chess.prototype = {
 
     movePiece : function(piece, destinationX, destinationY) {
         if(this.board[destinationX][destinationY] == null) {
-            if (piece.validMove(destinationX, destinationY)) {
-
+            if(piece.validMove(destinationX, destinationY)) {
+                coordinate = piece.coordinate;
+                this.board[coordinate.x][coordinate.y] = undefined;
+                this.board[destinationX][destinationY] = piece;
+                coordinate.x = destinationX;
+                coordinate.y = destinationY;
+            }
+        } else {
+            if(!piece.isSameTeam(this.board[destinationX][destinationY].team)) {
+                killedPiece = this.board[destinationX][destinationY];
                 coordinate = piece.coordinate;
                 this.board[coordinate.x][coordinate.y] = undefined;
                 this.board[destinationX][destinationY] = piece;
