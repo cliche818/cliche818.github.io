@@ -33,7 +33,7 @@ describe('Chess Piece', function () {
             expect(chessPiece.isSameTeam('white')).toBe(true);
         });
 
-        it('should return false if different team', function() {
+        it('should return false if different team', function () {
             expect(chessPiece.isSameTeam('black')).toBe(false);
         });
     });

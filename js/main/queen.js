@@ -1,5 +1,6 @@
 function Queen(team) {
     ChessPiece.call(this, arguments);
+    this.name = 'queen';
 }
 
 Queen.prototype = new ChessPiece();

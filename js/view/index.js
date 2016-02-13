@@ -1,9 +1,9 @@
 /* Connect four jquery */
 
-$(function() {
+$(function () {
     connectFour = new ConnectFourBoard();
 
-    for(var column = 0; column < 7; column++) {
+    for (var column = 0; column < 7; column++) {
         bindAddDiscToColumn(column);
     }
 
@@ -29,10 +29,10 @@ function endGame() {
 function addDisc(column) {
     availableSpot = connectFour.availableSpotInColumn(column);
 
-    if(availableSpot != -1) {
+    if (availableSpot != -1) {
         connectFour.addDisc(column, connectFour.currentPlayer());
 
-        $('.column-'+ column + ' .row-' + availableSpot).addClass('player-' + connectFour.currentPlayer() + '-color');
+        $('.column-' + column + ' .row-' + availableSpot).addClass('player-' + connectFour.currentPlayer() + '-color');
 
 
         if (connectFour.winner(column) != -1) {
@@ -48,7 +48,7 @@ function addDisc(column) {
 
 /* Chess Jquery */
 
-$(function() {
+$(function () {
     /* set up chess board with chess piece */
     var chess = new Chess();
     var whiteKing = new King('white');
@@ -64,10 +64,10 @@ $(function() {
 
     var currentSelectedPiece;
 
-    for(var column = 0; column <= 7; column++) {
-        for(var row = 0; row <= 7; row++) {
-            var position = { x: column, y: row};
-            $('.row-' + row).on('click', ' .column-' + column, position , function(event) {
+    for (var column = 0; column <= 7; column++) {
+        for (var row = 0; row <= 7; row++) {
+            var position = {x: column, y: row};
+            $('.row-' + row).on('click', ' .column-' + column, position, function (event) {
 
                 var y = event.data.y;
                 var x = event.data.x;
@@ -78,15 +78,17 @@ $(function() {
                 if (selectingPiece) {
                     console.log(chess.board);
                     currentSelectedPiece = chess.board[x][y];
-                    selectingPiece = false;
-                    $('#chess .ingame-message').text('Move Piece: ' + currentSelectedPiece.name);
+                    if (typeof currentSelectedPiece !== 'undefined') {
+                        selectingPiece = false;
+                        $('#chess .ingame-message').text('Move Piece: ' + currentSelectedPiece.name);
+                    }
                 } else {
-
                     if (currentSelectedPiece.validMove(x, y)) {
                         console.log('Moving Piece');
                         console.log('King column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
 
                         var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
+                        console.log(currentSelectedPiece);
 
                         $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(chessPieceCSSClass);//remove piece from previous position
                         chess.movePiece(currentSelectedPiece, x, y);
@@ -102,5 +104,5 @@ $(function() {
 });
 
 function ChessPieceCSSClass(chessPiece) {
-    return  chessPiece.team + '-' + chessPiece.name + '-piece';
+    return chessPiece.team + '-' + chessPiece.name + '-piece';
 }

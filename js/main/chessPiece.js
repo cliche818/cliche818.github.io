@@ -1,6 +1,10 @@
-function ChessPiece(team) {
+function ChessPiece(arguments) {
     this.coordinate = new Coordinate();
-    this.team = team;
+
+    console.log(arguments);
+    if (typeof arguments !== 'undefined'){
+        this.team = arguments[0];
+    }
 }
 
 ChessPiece.prototype = {
