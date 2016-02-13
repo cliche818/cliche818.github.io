@@ -2,7 +2,7 @@ describe('Chess Piece', function () {
     var chessPiece;
 
     beforeEach(function () {
-        chessPiece = new ChessPiece('white');
+        chessPiece = new ChessPiece(['white']);
 
     });
 

@@ -8,7 +8,7 @@ describe('Chess Game', function () {
 
     describe('placePiece', function () {
         it('should place a king on the board at a location on the board', function () {
-            var king = new ChessPiece('white');
+            var king = new ChessPiece(['white']);
             chess.placePiece(king, 0, 4);
             expect(chess.board[0][4]).toBe(king);
 
@@ -20,32 +20,42 @@ describe('Chess Game', function () {
 
     describe('movePiece', function () {
 
-        describe('general piece', function() {
-            beforeEach(function(){
-                chessPiece1 = new ChessPiece('white');
+        describe('general piece', function () {
+            beforeEach(function () {
+                chessPiece1 = new ChessPiece(['white']);
                 chess.placePiece(chessPiece1, 0, 4);
             });
 
-            it('should not be able to move a chess piece to a preoccupied spot in the same team', function() {
-                chessPiece2 = new ChessPiece('white');
+            it('should not be able to move a chess piece to a preoccupied spot in the same team', function () {
+                chessPiece2 = new ChessPiece(['white']);
                 chess.placePiece(chessPiece2, 1, 4);
-                chess.movePiece(chessPiece1, 1, 4);
+                takenOutPiece = chess.movePiece(chessPiece1, 1, 4);
                 expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
                 expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
             });
 
-            it('should allow a chess piece to go to a preoccupied spot from different team and remove that piece', function(){
-                chessPiece2 = new ChessPiece('black');
+            it('should allow a chess piece to go to a preoccupied spot from different team and remove that piece', function () {
+                chessPiece2 = new ChessPiece(['black']);
                 chess.placePiece(chessPiece2, 1, 4);
                 chess.movePiece(chessPiece1, 1, 4);
                 expect(chess.board[0][4] instanceof ChessPiece).toBe(false);
                 expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
+
             });
+
+            it('should return the killed chess piece', function () {
+                chessPiece2 = new ChessPiece(['black']);
+                chess.placePiece(chessPiece2, 1, 4);
+                killedPiece = chess.movePiece(chessPiece1, 1, 4);
+                expect(killedPiece instanceof ChessPiece).toBe(true);
+                expect(killedPiece.team).toBe('black');
+            });
+
         });
 
         describe('king', function () {
             var king;
-            beforeEach(function(){
+            beforeEach(function () {
                 king = new King();
                 chess.placePiece(king, 0, 4);
             });
@@ -55,7 +65,7 @@ describe('Chess Game', function () {
                 expect(chess.board[0][4]).toBe(undefined);
                 expect(chess.board[1][4] instanceof King).toBe(true);
 
-                coord = king.coordinate
+                coord = king.coordinate;
                 expect(coord.x).toBe(1);
                 expect(coord.y).toBe(4);
             });

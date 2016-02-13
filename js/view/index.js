@@ -90,9 +90,17 @@ $(function () {
                         var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
                         console.log(currentSelectedPiece);
 
-                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(chessPieceCSSClass);//remove piece from previous position
-                        chess.movePiece(currentSelectedPiece, x, y);
-                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);//add piece to new position
+                        //remove piece from previous position
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(chessPieceCSSClass);
+                        killedPiece = chess.movePiece(currentSelectedPiece, x, y);
+
+                        if(typeof killedPiece !== 'undefined') {
+                            var killedPieceCSSClass = ChessPieceCSSClass(killedPiece);
+                            console.log('killed PIECE:' + killedPieceCSSClass);
+                            $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(killedPieceCSSClass);
+                        }
+                        //add piece to new position
+                        $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);
 
                         selectingPiece = true;
                         $('#chess .ingame-message').text('Select Piece');

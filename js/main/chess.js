@@ -31,6 +31,8 @@ Chess.prototype = {
                 this.board[destinationX][destinationY] = piece;
                 coordinate.x = destinationX;
                 coordinate.y = destinationY;
+
+                return killedPiece;
             }
         }
     }

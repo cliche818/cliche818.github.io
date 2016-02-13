@@ -1,7 +1,6 @@
 function ChessPiece(arguments) {
     this.coordinate = new Coordinate();
 
-    console.log(arguments);
     if (typeof arguments !== 'undefined'){
         this.team = arguments[0];
     }
