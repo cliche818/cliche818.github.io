@@ -77,10 +77,10 @@ $(function () {
 
                 if (selectingPiece) {
                     console.log(chess.board);
-                    currentSelectedPiece = chess.board[x][y];
-                    if (typeof currentSelectedPiece !== 'undefined') {
+                    if (chess.isValidPiece(x,y)) {
+                        currentSelectedPiece = chess.board[x][y];
                         selectingPiece = false;
-                        $('#chess .ingame-message').text('Move Piece: ' + currentSelectedPiece.name);
+                        $('#chess .ingame-message').text('Team: ' + chess.turn + ', Move Piece: ' + currentSelectedPiece.name);
                     }
                 } else {
                     if (currentSelectedPiece.validMove(x, y)) {
@@ -103,7 +103,7 @@ $(function () {
                         $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);
 
                         selectingPiece = true;
-                        $('#chess .ingame-message').text('Select Piece');
+                        $('#chess .ingame-message').text('Team: ' + chess.turn + ', Select Piece');
                     }
                 }
             });
