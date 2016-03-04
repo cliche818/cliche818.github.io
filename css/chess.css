@@ -32,6 +32,14 @@
     content: "♔";
 }
 
+#chess .white-queen-piece:after {
+    content: "♕";
+}
+
 #chess .black-king-piece:after {
     content: "♚";
+}
+
+#chess .black-queen-piece:after {
+    content: "♛";
 }

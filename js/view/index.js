@@ -52,12 +52,27 @@ $(function () {
   /* set up chess board with chess piece */
   var chess = new Chess();
   var whiteKing = new King('white');
+  var whiteQueen = new Queen('white');
+
   var blackKing = new King('black');
+  var blackQueen = new Queen('black');
+
   chess.placePiece(whiteKing, 3, 0);
+  chess.placePiece(whiteQueen, 4, 0);
+
   chess.placePiece(blackKing, 3, 7);
+  chess.placePiece(blackQueen, 4, 7);
 
   $('#chess .row-0 .column-3').addClass(ChessPieceCSSClass(whiteKing));
+  $('#chess .row-0 .column-4').addClass(ChessPieceCSSClass(whiteQueen));
+
+
   $('#chess .row-7 .column-3').addClass(ChessPieceCSSClass(blackKing));
+  $('#chess .row-7 .column-4').addClass(ChessPieceCSSClass(blackQueen));
+
+
+
+
 
   /* initialize every grid spot with interactive click events */
   var selectingPiece = true;
