@@ -1,6 +1,14 @@
 #chess .coordinate {
     border: 1px solid black;
     height: 50px;
+    font-size: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+#chess .coordinate:after {
+    content: "";
 }
 
 #chess .centered {
@@ -20,11 +28,10 @@
     font-weight: bold;
 }
 
-#chess .white-king-piece {
-    background-color: lightgrey;
+#chess .white-king-piece:after {
+    content: "♔";
 }
 
-
-#chess .black-king-piece {
-    background-color: #2c3e50;
+#chess .black-king-piece:after {
+    content: "♚";
 }
