@@ -18,22 +18,22 @@ describe('Chess Game', function () {
         });
     });
 
-    describe('isValidPiece', function () {
+    describe('isPiecePlayable', function () {
         it('should return true if the given coordinate\'s piece is on the same team', function() {
             chessPiece = new ChessPiece(['black']);
             chess.placePiece(chessPiece, 0, 4);
             chess.turn = 'black';
-            expect(chess.isValidPiece(0, 4)).toBe(true);
+            expect(chess.isPiecePlayable(0, 4)).toBe(true);
         });
 
         it('should return false if the given coordinate\'s piece is not on the same team', function () {
             chessPiece = new ChessPiece(['black']);
             chess.placePiece(chessPiece, 0, 4);
-            expect(chess.isValidPiece(0, 4)).toBe(false);
+            expect(chess.isPiecePlayable(0, 4)).toBe(false);
         });
 
         it('should return false if there is no chess piece in those coordinates', function() {
-           expect(chess.isValidPiece(0,4)).toBe(false);
+           expect(chess.isPiecePlayable(0,4)).toBe(false);
         });
     });
 

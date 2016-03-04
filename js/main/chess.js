@@ -15,7 +15,7 @@ Chess.prototype = {
         coordinate.y = y;
     },
 
-    isValidPiece: function (x, y) {
+    isPiecePlayable: function (x, y) {
         chessPiece = this.board[x][y];
 
         if (typeof chessPiece !== 'undefined' && chessPiece.team === this.turn) {

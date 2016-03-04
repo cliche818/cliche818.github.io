@@ -77,7 +77,7 @@ $(function () {
 
                 if (selectingPiece) {
                     console.log(chess.board);
-                    if (chess.isValidPiece(x,y)) {
+                    if (chess.isPiecePlayable(x,y)) {
                         currentSelectedPiece = chess.board[x][y];
                         selectingPiece = false;
                         $('#chess .ingame-message').text('Team: ' + chess.turn + ', Move Piece: ' + currentSelectedPiece.name);
