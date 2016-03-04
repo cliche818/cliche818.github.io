@@ -66,13 +66,8 @@ $(function () {
   $('#chess .row-0 .column-3').addClass(ChessPieceCSSClass(whiteKing));
   $('#chess .row-0 .column-4').addClass(ChessPieceCSSClass(whiteQueen));
 
-
   $('#chess .row-7 .column-3').addClass(ChessPieceCSSClass(blackKing));
   $('#chess .row-7 .column-4').addClass(ChessPieceCSSClass(blackQueen));
-
-
-
-
 
   /* initialize every grid spot with interactive click events */
   var selectingPiece = true;
@@ -100,7 +95,7 @@ $(function () {
         } else {
           if (currentSelectedPiece.validMove(x, y)) {
             console.log('Moving Piece');
-            console.log('King column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
+            console.log('Piece column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
 
             var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
             console.log(currentSelectedPiece);
