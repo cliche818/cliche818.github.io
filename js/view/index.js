@@ -82,11 +82,7 @@ $(function () {
         var y = event.data.y;
         var x = event.data.x;
 
-        console.log(y);
-        console.log(x);
-
         if (selectingPiece) {
-          console.log(chess.board);
           if (chess.isPiecePlayable(x, y)) {
             currentSelectedPiece = chess.board[x][y];
             selectingPiece = false;
@@ -94,11 +90,7 @@ $(function () {
           }
         } else {
           if (currentSelectedPiece.validMove(x, y)) {
-            console.log('Moving Piece');
-            console.log('Piece column:' + currentSelectedPiece.coordinate.y + ' row:' + currentSelectedPiece.coordinate.x);
-
             var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
-            console.log(currentSelectedPiece);
 
             var previousX = currentSelectedPiece.coordinate.x;
             var previousY = currentSelectedPiece.coordinate.y;
@@ -112,7 +104,6 @@ $(function () {
 
               if (typeof returnedPiece != currentSelectedPiece) {
                 var killedPieceCSSClass = ChessPieceCSSClass(returnedPiece);
-                console.log('killed PIECE:' + killedPieceCSSClass);
                 $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(killedPieceCSSClass);
               }
               //add piece to new position
