@@ -119,6 +119,21 @@ describe('Chess Game', function () {
           chess.movePiece(chessPiece1, 1, 4);
           expect(chess.turn).toBe('black');
         });
+
+        it('should not kill the destination piece if path is obstructed and return null', function (){
+          chessPiece1.path = jasmine.createSpy().and.returnValue([[1, 4], [2, 4], [3, 4], [4, 4]]);
+
+          toBeKilledChessPiece = new ChessPiece(['black']);
+          chess.placePiece(toBeKilledChessPiece, 4, 4);
+          chessPiece2 = new ChessPiece(['black']);
+          chess.placePiece(chessPiece2, 2, 4);
+
+          returnedPiece = chess.movePiece(chessPiece1, 4, 4);
+          expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
+          expect(chess.board[4][4] instanceof ChessPiece).toBe(true);
+
+          expect(returnedPiece).toBe(null);
+        });
       });
     });
 

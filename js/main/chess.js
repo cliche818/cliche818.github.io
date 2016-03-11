@@ -45,7 +45,7 @@ Chess.prototype = {
         return piece;
       }
     } else {
-      if (chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team)) {
+      if (chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.path_not_obstructed(piece, destinationX, destinationY)) {
         var killedPiece = chessPieceAtDestination;
         var coordinate = piece.coordinate;
         this.board[coordinate.x][coordinate.y] = undefined;
@@ -71,7 +71,7 @@ Chess.prototype = {
       var x = coordinate[0];
       var y = coordinate[1];
 
-      if (this.board[x][y] != null) {
+      if (this.board[x][y] != null && !(destinationX === x && destinationY === y)) {
         return false;
       }
     }
