@@ -39,17 +39,17 @@ describe('Chess Game', function () {
 
   describe('winner', function () {
 
-    it('should return null if there is no winner', function() {
+    it('should return null if there is no winner', function () {
       expect(chess.winner()).toBe(null);
     });
 
-    it('should return white if white captures the black king piece', function() {
+    it('should return white if white captures the black king piece', function () {
       whitePiece = new ChessPiece(['white']);
       blackKing = new King(['black']);
-      chess.placePiece(whitePiece, 4,4);
-      chess.placePiece(blackKing, 0,4);
+      chess.placePiece(whitePiece, 4, 4);
+      chess.placePiece(blackKing, 0, 4);
 
-      chess.movePiece(whitePiece, 0,4);
+      chess.movePiece(whitePiece, 0, 4);
       expect(chess.winner()).toBe('white');
     });
   });
@@ -60,46 +60,66 @@ describe('Chess Game', function () {
       beforeEach(function () {
         chessPiece1 = new ChessPiece(['white']);
         chess.placePiece(chessPiece1, 0, 4);
+        spyOn(chessPiece1, "path").and.returnValue([[1, 4]]);
       });
 
-      it('should not be able to move a chess piece to a preoccupied spot in the same team', function () {
-        chessPiece2 = new ChessPiece(['white']);
-        chess.placePiece(chessPiece2, 1, 4);
-        takenOutPiece = chess.movePiece(chessPiece1, 1, 4);
-        expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
-        expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
+      describe('moving into a blank space or preoccupied by same team', function () {
+        it('should change whose turn it is after moving a piece', function () {
+          var returnedPiece = chess.movePiece(chessPiece1, 1, 4);
+          expect(chess.turn).toBe('black');
+          expect(returnedPiece instanceof ChessPiece).toBe(true);
+        });
+
+        it('should not be able to move a chess piece to a preoccupied spot in the same team and return null', function () {
+          var chessPiece2 = new ChessPiece(['white']);
+          chess.placePiece(chessPiece2, 1, 4);
+
+          var returnedPiece = chess.movePiece(chessPiece1, 1, 4);
+
+          expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
+          expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
+
+          expect(returnedPiece).toBe(null);
+        });
+
+        it('should not move a piece where another piece is in its path to get to its destination', function () {
+          chessPiece1.path = jasmine.createSpy().and.returnValue([[1, 4], [2, 4], [3, 4], [4, 4]]);
+
+          chessPiece2 = new ChessPiece(['black']);
+          chess.placePiece(chessPiece2, 2, 4);
+
+          chess.movePiece(chessPiece1, 4, 4);
+
+          expect(chess.board[0][4] instanceof ChessPiece).toBe(true);
+          expect(chess.board[4][4] instanceof ChessPiece).toBe(false);
+        });
       });
 
-      it('should change whose turn it is after moving a piece', function () {
-        chess.movePiece(chessPiece1, 1, 4);
-        expect(chess.turn).toBe('black');
+      describe('moving into a space with enemy piece', function () {
+        it('should allow a chess piece to go to a preoccupied spot from different team and remove that piece', function () {
+          chessPiece2 = new ChessPiece(['black']);
+          chess.placePiece(chessPiece2, 1, 4);
+          chess.movePiece(chessPiece1, 1, 4);
+          expect(chess.board[0][4] instanceof ChessPiece).toBe(false);
+          expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
+
+        });
+
+        it('should return the killed chess piece', function () {
+          chessPiece2 = new ChessPiece(['black']);
+          chess.placePiece(chessPiece2, 1, 4);
+          killedPiece = chess.movePiece(chessPiece1, 1, 4);
+          expect(killedPiece instanceof ChessPiece).toBe(true);
+          expect(killedPiece.team).toBe('black');
+        });
+
+        it('should change whose turn it is after taking out a piece', function () {
+          chessPiece2 = new ChessPiece(['black']);
+          chess.placePiece(chessPiece2, 1, 4);
+          chess.movePiece(chessPiece1, 1, 4);
+          expect(chess.turn).toBe('black');
+        });
       });
-
-      it('should allow a chess piece to go to a preoccupied spot from different team and remove that piece', function () {
-        chessPiece2 = new ChessPiece(['black']);
-        chess.placePiece(chessPiece2, 1, 4);
-        chess.movePiece(chessPiece1, 1, 4);
-        expect(chess.board[0][4] instanceof ChessPiece).toBe(false);
-        expect(chess.board[1][4] instanceof ChessPiece).toBe(true);
-
-      });
-
-      it('should return the killed chess piece', function () {
-        chessPiece2 = new ChessPiece(['black']);
-        chess.placePiece(chessPiece2, 1, 4);
-        killedPiece = chess.movePiece(chessPiece1, 1, 4);
-        expect(killedPiece instanceof ChessPiece).toBe(true);
-        expect(killedPiece.team).toBe('black');
-      });
-
-      it('should change whose turn it is after taking out a piece', function () {
-        chessPiece2 = new ChessPiece(['black']);
-        chess.placePiece(chessPiece2, 1, 4);
-        chess.movePiece(chessPiece1, 1, 4);
-        expect(chess.turn).toBe('black');
-      });
-
-
     });
 
     describe('king', function () {

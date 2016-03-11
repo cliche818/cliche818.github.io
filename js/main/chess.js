@@ -31,19 +31,23 @@ Chess.prototype = {
   },
 
   movePiece: function (piece, destinationX, destinationY) {
-    if (this.board[destinationX][destinationY] == null) {
+    var chessPieceAtDestination = this.board[destinationX][destinationY];
+
+    if (chessPieceAtDestination == null && this.path_not_obstructed(piece)) {
       if (piece.validMove(destinationX, destinationY)) {
-        coordinate = piece.coordinate;
+        var coordinate = piece.coordinate;
         this.board[coordinate.x][coordinate.y] = undefined;
         this.board[destinationX][destinationY] = piece;
         coordinate.x = destinationX;
         coordinate.y = destinationY;
+
         this.changeTurn();
+        return piece;
       }
     } else {
-      if (!piece.isSameTeam(this.board[destinationX][destinationY].team)) {
-        killedPiece = this.board[destinationX][destinationY];
-        coordinate = piece.coordinate;
+      if (chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team)) {
+        var killedPiece = chessPieceAtDestination;
+        var coordinate = piece.coordinate;
         this.board[coordinate.x][coordinate.y] = undefined;
         this.board[destinationX][destinationY] = piece;
         coordinate.x = destinationX;
@@ -58,6 +62,19 @@ Chess.prototype = {
         return killedPiece;
       }
     }
+
+    return null;
+  },
+
+  path_not_obstructed: function(piece) {
+    for (coordinate of piece.path()) {
+      var x = coordinate[0];
+      var y = coordinate[1];
+      if (this.board[x][y] != null) {
+        return false;
+      }
+    }
+    return true;
   },
 
   changeTurn: function () {

@@ -10,8 +10,6 @@ Queen.prototype.validMove = function (destinationX, destinationY) {
 
   var baseRuleValid = ChessPiece.prototype.validMove.call(this,destinationX, destinationY );
 
-  console.log(baseRuleValid && path_to_destination.length > 0);
-
   return baseRuleValid && path_to_destination.length > 0;
 };
 
