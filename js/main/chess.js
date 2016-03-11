@@ -30,16 +30,20 @@ Chess.prototype = {
     return this.winning_team;
   },
 
+  setMovedPieceLocation: function (piece, destinationX, destinationY) {
+    var coordinate = piece.coordinate;
+    this.board[coordinate.x][coordinate.y] = undefined;
+    this.board[destinationX][destinationY] = piece;
+    coordinate.x = destinationX;
+    coordinate.y = destinationY;
+  },
+
   movePiece: function (piece, destinationX, destinationY) {
     var chessPieceAtDestination = this.board[destinationX][destinationY];
 
     if (chessPieceAtDestination == null && this.path_not_obstructed(piece, destinationX, destinationY)) {
       if (piece.validMove(destinationX, destinationY)) {
-        var coordinate = piece.coordinate;
-        this.board[coordinate.x][coordinate.y] = undefined;
-        this.board[destinationX][destinationY] = piece;
-        coordinate.x = destinationX;
-        coordinate.y = destinationY;
+        this.setMovedPieceLocation(piece, destinationX, destinationY);
 
         this.changeTurn();
         return piece;
@@ -47,18 +51,13 @@ Chess.prototype = {
     } else {
       if (chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.path_not_obstructed(piece, destinationX, destinationY)) {
         var killedPiece = chessPieceAtDestination;
-        var coordinate = piece.coordinate;
-        this.board[coordinate.x][coordinate.y] = undefined;
-        this.board[destinationX][destinationY] = piece;
-        coordinate.x = destinationX;
-        coordinate.y = destinationY;
+        this.setMovedPieceLocation(piece, destinationX, destinationY);
 
         if (killedPiece.name === 'king') {
           this.winning_team = piece.team;
         }
 
         this.changeTurn();
-
         return killedPiece;
       }
     }
