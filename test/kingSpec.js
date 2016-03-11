@@ -7,10 +7,7 @@ describe('king', function () {
 
     describe('valid move', function () {
         beforeEach(function () {
-            var coordinate = new Coordinate();
-            coordinate.x = 1;
-            coordinate.y = 1;
-            king.coordinate = coordinate;
+            king.coordinate = new Coordinate(1,1);
         });
 
         describe('should return true', function () {

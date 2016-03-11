@@ -7,10 +7,7 @@ describe('Queen', function () {
 
   describe('validMove', function () {
     beforeEach(function () {
-      coordinate = new Coordinate();
-      queen.coordinate = coordinate;
-      coordinate.x = 4;
-      coordinate.y = 4;
+      queen.coordinate = new Coordinate(4,4);
     });
 
     it('is a valid move going horizontally', function() {
@@ -35,10 +32,7 @@ describe('Queen', function () {
 
   describe('path', function () {
     beforeEach(function () {
-      coordinate = new Coordinate();
-      queen.coordinate = coordinate;
-      coordinate.x = 4;
-      coordinate.y = 4;
+      queen.coordinate = new Coordinate(4,4);
     });
 
     it('going vertically, provide a list of coordinates of steps to its destination', function () {

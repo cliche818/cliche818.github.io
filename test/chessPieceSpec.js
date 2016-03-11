@@ -8,10 +8,7 @@ describe('Chess Piece', function () {
 
   describe('valid move', function () {
     beforeEach(function () {
-      var coordinate = new Coordinate();
-      coordinate.x = 1;
-      coordinate.y = 1;
-      chessPiece.coordinate = coordinate;
+      chessPiece.coordinate = new Coordinate(1,1);
     });
 
     it('should return true when given a coordinate', function () {
