@@ -100,17 +100,24 @@ $(function () {
             var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
             console.log(currentSelectedPiece);
 
-            //remove piece from previous position
-            $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(chessPieceCSSClass);
-            killedPiece = chess.movePiece(currentSelectedPiece, x, y);
+            var previousX = currentSelectedPiece.coordinate.x;
+            var previousY = currentSelectedPiece.coordinate.y;
+            var returnedPiece = chess.movePiece(currentSelectedPiece, x, y);
 
-            if (typeof killedPiece !== 'undefined') {
-              var killedPieceCSSClass = ChessPieceCSSClass(killedPiece);
-              console.log('killed PIECE:' + killedPieceCSSClass);
-              $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(killedPieceCSSClass);
+            if (returnedPiece == null) {
+              //invalid move, don't do anything
+            } else {
+              //remove piece from previous position
+              $('#chess .row-' + previousY + ' .column-' + previousX).removeClass(chessPieceCSSClass);
+
+              if (typeof returnedPiece != currentSelectedPiece) {
+                var killedPieceCSSClass = ChessPieceCSSClass(returnedPiece);
+                console.log('killed PIECE:' + killedPieceCSSClass);
+                $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).removeClass(killedPieceCSSClass);
+              }
+              //add piece to new position
+              $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);
             }
-            //add piece to new position
-            $('#chess .row-' + currentSelectedPiece.coordinate.y + ' .column-' + currentSelectedPiece.coordinate.x).addClass(chessPieceCSSClass);
 
             if (chess.winner() !== null) {
               $('#chess .ingame-message').text('Winner: ' + chess.winner());

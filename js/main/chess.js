@@ -33,7 +33,7 @@ Chess.prototype = {
   movePiece: function (piece, destinationX, destinationY) {
     var chessPieceAtDestination = this.board[destinationX][destinationY];
 
-    if (chessPieceAtDestination == null && this.path_not_obstructed(piece)) {
+    if (chessPieceAtDestination == null && this.path_not_obstructed(piece, destinationX, destinationY)) {
       if (piece.validMove(destinationX, destinationY)) {
         var coordinate = piece.coordinate;
         this.board[coordinate.x][coordinate.y] = undefined;
@@ -66,10 +66,11 @@ Chess.prototype = {
     return null;
   },
 
-  path_not_obstructed: function(piece) {
-    for (coordinate of piece.path()) {
+  path_not_obstructed: function(piece, destinationX, destinationY) {
+    for (var coordinate of piece.path(destinationX, destinationY)) {
       var x = coordinate[0];
       var y = coordinate[1];
+
       if (this.board[x][y] != null) {
         return false;
       }
