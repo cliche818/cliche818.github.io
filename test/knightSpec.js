@@ -16,4 +16,10 @@ describe('knight', function(){
 
     });
   });
+
+  // describe('path', function(){
+  //   it('should return the path for a valid destination', function(){
+  //     expect(knight.path(3,6)).toBe([[],[3,4]])
+  //   });
+  // });
 });
