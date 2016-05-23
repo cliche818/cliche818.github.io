@@ -20,33 +20,13 @@ Queen.prototype.path = function (destinationX, destinationY) {
 
   var path = [];
   if ((destinationX - x) !== 0 && destinationY === y) {
-    this.vertical_path(destinationX, destinationY, path);
+    return this.coordinate.verticalPath(destinationX, destinationY);
   } else if ((destinationY - y) !== 0 && destinationX === x) {
     this.horizontal_path(destinationX, destinationY, path);
   } else {
     this.diagonal_path(destinationX, destinationY, path);
   }
   return path;
-};
-
-Queen.prototype.vertical_path = function (destinationX, destinationY, path) {
-  var x = this.coordinate.x;
-
-  if (destinationX > x) {
-    x_step = x + 1;
-    while (x_step !== destinationX) {
-      path.push([x_step, destinationY]);
-      x_step += 1;
-    }
-  } else {
-    x_step = x - 1;
-    while (x_step !== destinationX) {
-      path.push([x_step, destinationY]);
-      x_step -= 1;
-    }
-  }
-
-  path.push([destinationX, destinationY]);
 };
 
 Queen.prototype.horizontal_path = function (destinationX, destinationY, path) {
