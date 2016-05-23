@@ -36,10 +36,18 @@
     content: "♕";
 }
 
+#chess .white-knight-piece:after {
+    content: "♘";
+}
+
 #chess .black-king-piece:after {
     content: "♚";
 }
 
 #chess .black-queen-piece:after {
     content: "♛";
+}
+
+#chess .black-knight-piece:after {
+    content: "♞";
 }

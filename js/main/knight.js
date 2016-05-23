@@ -1,5 +1,5 @@
 function Knight(team) {
-  ChessPiece.call(this.arguments);
+  ChessPiece.call(this, arguments);
   this.name = 'knight';
 }
 
@@ -35,6 +35,6 @@ Knight.prototype.generateAllPossibleDestinations = function () {
     new Coordinate(x + 1, y - 2),
     new Coordinate(x - 1, y - 2)
   ]
-
-
 };
+
+// did not implement knight path() because knight can "jump" over enemy targets...like a teleport

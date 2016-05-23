@@ -53,21 +53,38 @@ $(function () {
   var chess = new Chess();
   var whiteKing = new King('white');
   var whiteQueen = new Queen('white');
+  var whiteKnight = new Knight('white');
+  var whiteKnight2 = new Knight('white');
+
 
   var blackKing = new King('black');
   var blackQueen = new Queen('black');
+  var blackKnight = new Knight('black');
+  var blackKnight2 = new Knight('black');
+
 
   chess.placePiece(whiteKing, 3, 0);
   chess.placePiece(whiteQueen, 4, 0);
+  chess.placePiece(whiteKnight, 1, 0);
+  chess.placePiece(whiteKnight2, 6, 0);
 
   chess.placePiece(blackKing, 3, 7);
   chess.placePiece(blackQueen, 4, 7);
+  chess.placePiece(blackKnight, 1, 7);
+  chess.placePiece(blackKnight2, 6, 7);
+
+
 
   $('#chess .row-0 .column-3').addClass(ChessPieceCSSClass(whiteKing));
   $('#chess .row-0 .column-4').addClass(ChessPieceCSSClass(whiteQueen));
+  $('#chess .row-0 .column-1').addClass(ChessPieceCSSClass(whiteKnight));
+  $('#chess .row-0 .column-6').addClass(ChessPieceCSSClass(whiteKnight2));
+
 
   $('#chess .row-7 .column-3').addClass(ChessPieceCSSClass(blackKing));
   $('#chess .row-7 .column-4').addClass(ChessPieceCSSClass(blackQueen));
+  $('#chess .row-7 .column-1').addClass(ChessPieceCSSClass(blackKnight));
+  $('#chess .row-7 .column-6').addClass(ChessPieceCSSClass(blackKnight2));
 
   /* initialize every grid spot with interactive click events */
   var selectingPiece = true;
