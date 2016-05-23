@@ -32,5 +32,30 @@ Coordinate.prototype = {
     }
 
     return path;
+  },
+
+  horizontalPath: function(destinationX, destinationY) {
+    var y = this.y;
+    var x = this.x;
+    var path = [];
+
+    if ((destinationY - y) !== 0 && destinationX === x) {
+      if (destinationY > y) {
+        y_step = y + 1;
+        while (y_step !== destinationY) {
+          path.push([destinationX, y_step]);
+          y_step += 1;
+        }
+      } else {
+        y_step = y - 1;
+        while (y_step !== destinationY) {
+          path.push([destinationX, y_step]);
+          y_step -= 1;
+        }
+      }
+      path.push([destinationX, destinationY]);
+    }
+
+    return path;
   }
 };

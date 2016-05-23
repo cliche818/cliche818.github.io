@@ -20,7 +20,7 @@ describe('Coordinate', function () {
     });
   });
 
-  describe('.verticalPath', function () {
+  describe('#verticalPath', function () {
     var coordinate = new Coordinate(4,4);
 
     it('should return a list of coordinates to the destination', function () {
@@ -30,6 +30,19 @@ describe('Coordinate', function () {
 
     it('should return a empty array if there is no path to destination', function() {
       expect(coordinate.verticalPath(0, 3)).toEqual([]);
+    });
+  });
+
+  describe('#horizontalPath', function(){
+    var coordinate = new Coordinate(4,4);
+
+    it('should return a list of coordinates to the destination', function () {
+      expect(coordinate.horizontalPath(4, 7)).toEqual([[4, 5], [4, 6], [4, 7]]);
+      expect(coordinate.horizontalPath(4, 0)).toEqual([[4, 3], [4, 2], [4, 1], [4, 0]]);
+    });
+
+    it('should return a empty array if there is no path to destination', function() {
+      expect(coordinate.horizontalPath(0, 3)).toEqual([]);
     });
   });
 });
