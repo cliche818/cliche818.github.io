@@ -6,14 +6,14 @@ function Queen(team) {
 Queen.prototype = new ChessPiece();
 
 Queen.prototype.validMove = function (destinationX, destinationY) {
-  var path_to_destination = this._path(destinationX, destinationY);
+  var path_to_destination = this.path(destinationX, destinationY);
 
   var baseRuleValid = ChessPiece.prototype.validMove.call(this,destinationX, destinationY );
 
   return baseRuleValid && path_to_destination.length > 0;
 };
 
-Queen.prototype._path = function (destinationX, destinationY) {
+Queen.prototype.path = function (destinationX, destinationY) {
 
   var x = this.coordinate.x;
   var y = this.coordinate.y;
