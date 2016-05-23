@@ -44,6 +44,10 @@
     content: "♗";
 }
 
+#chess .white-rook-piece:after {
+    content: "♖";
+}
+
 #chess .black-king-piece:after {
     content: "♚";
 }
@@ -58,4 +62,8 @@
 
 #chess .black-bishop-piece:after {
     content: "♝";
+}
+
+#chess .black-rook-piece:after {
+    content: "♜";
 }
