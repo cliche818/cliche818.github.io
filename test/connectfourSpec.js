@@ -3,7 +3,6 @@ describe("Connect Four Board", function () {
     var connectFourBoard;
 
     beforeEach(function () {
-        //connectFourBoard = initializeBoard();
         connectFourBoard = new ConnectFourBoard();
     });
 

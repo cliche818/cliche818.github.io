@@ -60,7 +60,7 @@ describe('Chess Game', function () {
       beforeEach(function () {
         chessPiece1 = new ChessPiece(['white']);
         chess.placePiece(chessPiece1, 0, 4);
-        spyOn(chessPiece1, "path").and.returnValue([[1, 4]]);
+        sinon.stub(chessPiece1, "path", function() { return ([[1, 4]]) });
       });
 
       describe('moving into a blank space or preoccupied by same team', function () {
@@ -83,7 +83,8 @@ describe('Chess Game', function () {
         });
 
         it('should not move a piece where another piece is in its path to get to its destination', function () {
-          chessPiece1.path = jasmine.createSpy().and.returnValue([[1, 4], [2, 4], [3, 4], [4, 4]]);
+          chessPiece1.path.restore();
+          sinon.stub(chessPiece1, "path", function() { return ([[1, 4], [2, 4], [3, 4], [4, 4]]) });
 
           chessPiece2 = new ChessPiece(['black']);
           chess.placePiece(chessPiece2, 2, 4);
@@ -121,7 +122,8 @@ describe('Chess Game', function () {
         });
 
         it('should not kill the destination piece if path is obstructed and return null', function (){
-          chessPiece1.path = jasmine.createSpy().and.returnValue([[1, 4], [2, 4], [3, 4], [4, 4]]);
+          chessPiece1.path.restore();
+          sinon.stub(chessPiece1, "path", function() { return ([[1, 4], [2, 4], [3, 4], [4, 4]]) });
 
           toBeKilledChessPiece = new ChessPiece(['black']);
           chess.placePiece(toBeKilledChessPiece, 4, 4);
