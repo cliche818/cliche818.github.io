@@ -27,13 +27,13 @@ describe('Bishop', function() {
       expect(bishop.validMove(7,7)).toBe(true);
     });
 
-    // it('should return false for non diagonal locations', function(){
-    //   expect(bishop.validMove(3,4)).toBe(false);
-    //   expect(bishop.validMove(5,4)).toBe(false);
-    //   expect(bishop.validMove(4,0)).toBe(false);
-    //   expect(bishop.validMove(4,7)).toBe(false);
-    //   expect(bishop.validMove(2,1)).toBe(false);
-    //   expect(bishop.validMove(6,7)).toBe(false);
-    // });
+    it('should return false for non diagonal locations', function(){
+      expect(bishop.validMove(3,4)).toBe(false);
+      expect(bishop.validMove(5,4)).toBe(false);
+      expect(bishop.validMove(4,0)).toBe(false);
+      expect(bishop.validMove(4,7)).toBe(false);
+      expect(bishop.validMove(2,1)).toBe(false);
+      expect(bishop.validMove(6,7)).toBe(false);
+    });
   });
 });

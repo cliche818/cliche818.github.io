@@ -40,6 +40,10 @@
     content: "♘";
 }
 
+#chess .white-bishop-piece:after {
+    content: "♗";
+}
+
 #chess .black-king-piece:after {
     content: "♚";
 }
@@ -50,4 +54,8 @@
 
 #chess .black-knight-piece:after {
     content: "♞";
+}
+
+#chess .black-bishop-piece:after {
+    content: "♝";
 }
