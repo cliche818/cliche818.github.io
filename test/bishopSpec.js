@@ -1,13 +1,10 @@
 describe('Bishop', function() {
   beforeEach(function(){
     bishop = new Bishop();
+    bishop.coordinate = new Coordinate(4,4);
   });
 
   describe('validMove', function(){
-    beforeEach(function(){
-      bishop.coordinate = new Coordinate(4,4);
-    });
-
     it('should return true if it is a diagonal location', function() {
       expect(bishop.validMove(7,1)).toBe(true);
       expect(bishop.validMove(6,2)).toBe(true);
@@ -34,6 +31,14 @@ describe('Bishop', function() {
       expect(bishop.validMove(4,7)).toBe(false);
       expect(bishop.validMove(2,1)).toBe(false);
       expect(bishop.validMove(6,7)).toBe(false);
+    });
+  });
+
+  describe('#diagonalPath', function(){
+    it('should return a list of coordinates to its possible destination', function(){
+      var spy = sinon.spy(bishop.coordinate, 'diagonalPath');
+      bishop.path(6,6);
+      expect(spy.calledOnce).toBe(true);
     });
   });
 });

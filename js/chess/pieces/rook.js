@@ -6,6 +6,12 @@ function Rook(team) {
 Rook.prototype = new ChessPiece();
 
 Rook.prototype.validMove = function (destinationX, destinationY) {
+  var path = this.path(destinationX, destinationY);
+
+  return path.length > 0;
+}
+
+Rook.prototype.path = function(destinationX, destinationY) {
   var path = [];
 
   if ((destinationX - this.coordinate.x) !== 0 && destinationY === this.coordinate.y) {
@@ -14,5 +20,5 @@ Rook.prototype.validMove = function (destinationX, destinationY) {
     path = this.coordinate.horizontalPath(destinationX, destinationY);
   }
 
-  return path.length > 0;
+  return path;
 }

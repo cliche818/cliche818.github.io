@@ -23,4 +23,20 @@ describe('Rook', function(){
     });
   });
 
+  describe('#path', function(){
+    describe('should return a list of coordinates to its possible coordinates', function(){
+      it('for a vertical path', function(){
+        var spy = sinon.spy(rook.coordinate, 'verticalPath');
+        rook.path(6,4);
+        expect(spy.calledOnce).toBe(true);
+      });
+
+      it('for a horizontal path', function(){
+        var spy = sinon.spy(rook.coordinate, 'horizontalPath');
+        rook.path(4,6);
+        expect(spy.calledOnce).toBe(true);
+      });
+    });
+  });
+
 });
