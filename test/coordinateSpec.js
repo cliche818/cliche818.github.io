@@ -45,4 +45,32 @@ describe('Coordinate', function () {
       expect(coordinate.horizontalPath(0, 3)).toEqual([]);
     });
   });
+  
+  describe('#diagonalPath', function(){
+    var coordinate = new Coordinate(4,4);
+    
+    describe('should return a list of coordinates to the destination', function() {
+      it('for bottom left', function () {
+        expect(coordinate.diagonalPath(1, 1)).toEqual([[3, 3], [2, 2], [1, 1]]);
+      });
+
+      it('for bottom right', function() {
+        expect(coordinate.diagonalPath(7, 1)).toEqual([[5, 3], [6, 2], [7, 1]]);
+      });
+
+      it('for top left', function() {
+        expect(coordinate.diagonalPath(1, 7)).toEqual([[3, 5], [2, 6], [1, 7]]);
+      });
+
+      it('for top right', function() {
+        expect(coordinate.diagonalPath(7, 7)).toEqual([[5, 5], [6, 6], [7, 7]]);
+      });
+    });
+
+    it('should return an empty array if there is no path to destination', function(){
+      expect(coordinate.diagonalPath(5,4)).toEqual([]);
+      expect(coordinate.diagonalPath(6,4)).toEqual([]);
+      expect(coordinate.diagonalPath(0,7)).toEqual([]);
+    });
+  });
 });

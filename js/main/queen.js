@@ -18,113 +18,11 @@ Queen.prototype.path = function (destinationX, destinationY) {
   var x = this.coordinate.x;
   var y = this.coordinate.y;
 
-  var path = [];
   if ((destinationX - x) !== 0 && destinationY === y) {
     return this.coordinate.verticalPath(destinationX, destinationY);
   } else if ((destinationY - y) !== 0 && destinationX === x) {
     return this.coordinate.horizontalPath(destinationX, destinationY);
   } else {
-    this.diagonal_path(destinationX, destinationY, path);
+    return this.coordinate.diagonalPath(destinationX, destinationY);
   }
-  return path;
-};
-
-Queen.prototype.diagonal_path = function (destinationX, destinationY, path) {
-  this.try_bottom_left_diagonal_path(destinationX, destinationY, path);
-  this.try_bottom_right_diagonal_path(destinationX, destinationY, path);
-  this.try_top_left_diagonal_path(destinationX, destinationY, path);
-  this.try_top_right_diagonal_path(destinationX, destinationY, path);
-
-};
-
-Queen.prototype.try_bottom_left_diagonal_path = function (destinationX, destinationY, path) {
-  var x = this.coordinate.x;
-  var y = this.coordinate.y;
-
-  var x_step = x - 1;
-  var y_step = y - 1;
-
-  var possible_path = [];
-
-  while (destinationX <= x_step && destinationY <= y_step) {
-    if (x_step === destinationX && y_step === destinationY) {
-      possible_path.push([destinationX, destinationY]);
-      path.push.apply(path, possible_path);
-    } else {
-      possible_path.push([x_step, y_step]);
-    }
-
-    x_step -= 1;
-    y_step -= 1;
-  }
-
-};
-
-Queen.prototype.try_bottom_right_diagonal_path = function (destinationX, destinationY, path) {
-  var x = this.coordinate.x;
-  var y = this.coordinate.y;
-
-  var x_step = x + 1;
-  var y_step = y - 1;
-
-  var possible_path = [];
-
-  while (destinationX >= x_step && destinationY <= y_step) {
-    if (x_step === destinationX && y_step === destinationY) {
-      possible_path.push([destinationX, destinationY]);
-      path.push.apply(path, possible_path);
-    } else {
-      possible_path.push([x_step, y_step]);
-    }
-
-    x_step += 1;
-    y_step -= 1;
-  }
-
-};
-
-Queen.prototype.try_top_left_diagonal_path = function (destinationX, destinationY, path) {
-  var x = this.coordinate.x;
-  var y = this.coordinate.y;
-
-  var x_step = x - 1;
-  var y_step = y + 1;
-
-  var possible_path = [];
-
-  while (destinationX <= x_step && destinationY >= y_step) {
-    if (x_step === destinationX && y_step === destinationY) {
-      possible_path.push([destinationX, destinationY]);
-      path.push.apply(path, possible_path);
-    } else {
-      possible_path.push([x_step, y_step]);
-    }
-
-    x_step -= 1;
-    y_step += 1;
-  }
-
-};
-
-Queen.prototype.try_top_right_diagonal_path = function (destinationX, destinationY, path) {
-  var x = this.coordinate.x;
-  var y = this.coordinate.y;
-
-  var x_step = x + 1;
-  var y_step = y + 1;
-
-  var possible_path = [];
-
-  while (destinationX >= x_step && destinationY >= y_step) {
-    if (x_step === destinationX && y_step === destinationY) {
-      possible_path.push([destinationX, destinationY]);
-      path.push.apply(path, possible_path);
-    } else {
-      possible_path.push([x_step, y_step]);
-    }
-
-    x_step += 1;
-    y_step += 1;
-  }
-
 };
