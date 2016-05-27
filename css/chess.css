@@ -11,6 +11,10 @@
     content: "";
 }
 
+#chess .row:nth-child(even) .coordinate:nth-child(even), #chess .row:nth-child(odd) .coordinate:nth-child(odd) {
+    background-color: #18bc9c;
+}
+
 #chess .centered {
     text-align: center;
 }
@@ -30,40 +34,50 @@
 
 #chess .white-king-piece:after {
     content: "♔";
+    cursor: pointer;
 }
 
 #chess .white-queen-piece:after {
     content: "♕";
+    cursor: pointer;
 }
 
 #chess .white-knight-piece:after {
     content: "♘";
+    cursor: pointer;
 }
 
 #chess .white-bishop-piece:after {
     content: "♗";
+    cursor: pointer;
 }
 
 #chess .white-rook-piece:after {
     content: "♖";
+    cursor: pointer;
 }
 
 #chess .black-king-piece:after {
     content: "♚";
+    cursor: pointer;
 }
 
 #chess .black-queen-piece:after {
     content: "♛";
+    cursor: pointer;
 }
 
 #chess .black-knight-piece:after {
     content: "♞";
+    cursor: pointer;
 }
 
 #chess .black-bishop-piece:after {
     content: "♝";
+    cursor: pointer;
 }
 
 #chess .black-rook-piece:after {
     content: "♜";
+    cursor: pointer;
 }
