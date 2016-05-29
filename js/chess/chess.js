@@ -37,18 +37,7 @@ Chess.prototype = {
     coordinate.x = destinationX;
     coordinate.y = destinationY;
   },
-
-  canMoveToEmptySpot: function (piece, destinationX, destinationY) {
-    var chessPieceAtDestination = this.board[destinationX][destinationY];
-
-    return chessPieceAtDestination == null && this.path_not_obstructed(piece, destinationX, destinationY);
-  },
-
-  canKillEnemyPiece: function (piece, destinationX, destinationY) {
-    var chessPieceAtDestination = this.board[destinationX][destinationY];
-    return chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.path_not_obstructed(piece, destinationX, destinationY);
-  },
-
+  
   movePiece: function (piece, destinationX, destinationY) {
     var chessPieceAtDestination = this.board[destinationX][destinationY];
 
@@ -75,8 +64,27 @@ Chess.prototype = {
 
     return null;
   },
+  
+  changeTurn: function () {
+    if (this.turn === 'white') {
+      this.turn = 'black';
+    } else {
+      this.turn = 'white';
+    }
+  },
 
-  path_not_obstructed: function (piece, destinationX, destinationY) {
+  canMoveToEmptySpot: function (piece, destinationX, destinationY) {
+    var chessPieceAtDestination = this.board[destinationX][destinationY];
+
+    return chessPieceAtDestination == null && this.pathNotObstructed(piece, destinationX, destinationY);
+  },
+
+  canKillEnemyPiece: function (piece, destinationX, destinationY) {
+    var chessPieceAtDestination = this.board[destinationX][destinationY];
+    return chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.killPathNotObstructed(piece, destinationX, destinationY);
+  },
+
+  pathNotObstructed: function (piece, destinationX, destinationY) {
     for (var coordinate of piece.path(destinationX, destinationY)) {
       var x = coordinate[0];
       var y = coordinate[1];
@@ -88,11 +96,15 @@ Chess.prototype = {
     return true;
   },
 
-  changeTurn: function () {
-    if (this.turn === 'white') {
-      this.turn = 'black';
-    } else {
-      this.turn = 'white';
+  killPathNotObstructed: function( piece, destinationX, destinationY) {
+    for (var coordinate of piece.killPath(destinationX, destinationY)) {
+      var x = coordinate[0];
+      var y = coordinate[1];
+
+      if (this.board[x][y] != null && !(destinationX === x && destinationY === y)) {
+        return false;
+      }
     }
+    return true;
   }
 };

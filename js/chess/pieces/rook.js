@@ -9,7 +9,7 @@ Rook.prototype.validMove = function (destinationX, destinationY) {
   var path = this.path(destinationX, destinationY);
 
   return path.length > 0;
-}
+};
 
 Rook.prototype.path = function(destinationX, destinationY) {
   var path = [];
@@ -21,4 +21,8 @@ Rook.prototype.path = function(destinationX, destinationY) {
   }
 
   return path;
+};
+
+Rook.prototype.killPath = function(destinationX, destinationY) {
+  return this.path(destinationX, destinationY);
 }

@@ -123,7 +123,7 @@ describe('Chess Game', function () {
 
         it('should not kill the destination piece if path is obstructed and return null', function (){
           chessPiece1.path.restore();
-          sinon.stub(chessPiece1, "path", function() { return ([[1, 4], [2, 4], [3, 4], [4, 4]]) });
+          sinon.stub(chessPiece1, "killPath", function() { return ([[1, 4], [2, 4], [3, 4], [4, 4]]) });
 
           toBeKilledChessPiece = new ChessPiece(['black']);
           chess.placePiece(toBeKilledChessPiece, 4, 4);

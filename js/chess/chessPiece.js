@@ -14,6 +14,10 @@ ChessPiece.prototype = {
   path: function(destinationX, destinationY) {
     return [];
   },
+  
+  killPath: function(destinationX, destinationY) {
+    return [];
+  },
 
   samePosition: function (x, y) {
     return (x === this.coordinate.x && y === this.coordinate.y);

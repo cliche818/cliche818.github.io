@@ -3,13 +3,10 @@ describe('Queen', function () {
 
   beforeEach(function () {
     queen = new Queen();
+    queen.coordinate = new Coordinate(4, 4);
   });
 
   describe('validMove', function () {
-    beforeEach(function () {
-      queen.coordinate = new Coordinate(4, 4);
-    });
-
     it('should return true for a valid move going horizontally', function () {
       expect(queen.validMove(7, 4)).toBe(true);
       expect(queen.validMove(1, 4)).toBe(true);
@@ -40,31 +37,36 @@ describe('Queen', function () {
   });
 
   describe('#path', function () {
-    beforeEach(function () {
-      queen.coordinate = new Coordinate(4, 4);
-    });
-
     describe('should return a list of coordinates to its destination', function () {
       it('for a horizontal path', function () {
         var spy = sinon.spy(queen.coordinate, 'horizontalPath');
         var coordinates = queen.path(4, 7);
-        expect(coordinates).toEqual([[4,5],[4,6],[4,7]]);
+        expect(coordinates).toEqual([[4, 5], [4, 6], [4, 7]]);
         expect(spy.calledOnce).toBe(true);
       });
 
       it('for a vertical path', function () {
         var spy = sinon.spy(queen.coordinate, 'verticalPath');
         var coordinates = queen.path(6, 4);
-        expect(coordinates).toEqual([[5,4],[6,4]]);
+        expect(coordinates).toEqual([[5, 4], [6, 4]]);
         expect(spy.calledOnce).toBe(true);
       });
 
-      it('for a horizonal path', function(){
+      it('for a horizonal path', function () {
         var spy = sinon.spy(queen.coordinate, 'diagonalPath');
-        var coordinates = queen.path(6,6);
-        expect(coordinates).toEqual([[5,5],[6,6]]);
+        var coordinates = queen.path(6, 6);
+        expect(coordinates).toEqual([[5, 5], [6, 6]]);
         expect(spy.calledOnce).toBe(true);
       });
+    });
+  });
+
+  describe('#killPath', function () {
+    it('should return a set of coordinates to destination for a kill', function () {
+      var spy = sinon.spy(queen, 'path');
+      var coordinates = queen.killPath(4, 7);
+      expect(coordinates).toEqual([[4, 5], [4, 6], [4, 7]]);
+      expect(spy.calledOnce).toBe(true);
     });
   });
 });

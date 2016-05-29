@@ -26,3 +26,7 @@ Queen.prototype.path = function (destinationX, destinationY) {
     return this.coordinate.diagonalPath(destinationX, destinationY);
   }
 };
+
+Queen.prototype.killPath = function (destinationX, destinationY) {
+  return this.path(destinationX, destinationY);
+};

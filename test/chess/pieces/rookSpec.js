@@ -39,4 +39,13 @@ describe('Rook', function(){
     });
   });
 
+  describe('#killPath', function(){
+    it('should return a set of coordinates to destination for a kill', function () {
+      var spy = sinon.spy(rook, 'path');
+      var coordinates = rook.killPath(4, 7);
+      expect(coordinates).toEqual([[4, 5], [4, 6], [4, 7]]);
+      expect(spy.calledOnce).toBe(true);
+    });
+  });
+
 });
