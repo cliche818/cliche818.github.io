@@ -38,10 +38,21 @@ Chess.prototype = {
     coordinate.y = destinationY;
   },
 
+  canMoveToEmptySpot: function (piece, destinationX, destinationY) {
+    var chessPieceAtDestination = this.board[destinationX][destinationY];
+
+    return chessPieceAtDestination == null && this.path_not_obstructed(piece, destinationX, destinationY);
+  },
+
+  canKillEnemyPiece: function (piece, destinationX, destinationY) {
+    var chessPieceAtDestination = this.board[destinationX][destinationY];
+    return chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.path_not_obstructed(piece, destinationX, destinationY);
+  },
+
   movePiece: function (piece, destinationX, destinationY) {
     var chessPieceAtDestination = this.board[destinationX][destinationY];
 
-    if (chessPieceAtDestination == null && this.path_not_obstructed(piece, destinationX, destinationY)) {
+    if (this.canMoveToEmptySpot(piece, destinationX, destinationY)) {
       if (piece.validMove(destinationX, destinationY)) {
         this.setMovedPieceLocation(piece, destinationX, destinationY);
 
@@ -49,7 +60,7 @@ Chess.prototype = {
         return piece;
       }
     } else {
-      if (chessPieceAtDestination != null && !piece.isSameTeam(chessPieceAtDestination.team) && this.path_not_obstructed(piece, destinationX, destinationY)) {
+      if (this.canKillEnemyPiece(piece, destinationX, destinationY)) {
         var killedPiece = chessPieceAtDestination;
         this.setMovedPieceLocation(piece, destinationX, destinationY);
 
@@ -65,7 +76,7 @@ Chess.prototype = {
     return null;
   },
 
-  path_not_obstructed: function(piece, destinationX, destinationY) {
+  path_not_obstructed: function (piece, destinationX, destinationY) {
     for (var coordinate of piece.path(destinationX, destinationY)) {
       var x = coordinate[0];
       var y = coordinate[1];
