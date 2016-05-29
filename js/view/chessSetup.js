@@ -12,6 +12,8 @@ $(function () {
   var whiteRook = new Rook('white');
   var whiteRook2 = new Rook('white');
 
+  var whitePawn = new Pawn('white', 'up');
+
 
   var blackKing = new King('black');
   var blackQueen = new Queen('black');
@@ -31,6 +33,8 @@ $(function () {
   chess.placePiece(whiteKnight2, 6, 0);
   chess.placePiece(whiteRook2, 7, 0);
 
+  chess.placePiece(whitePawn, 2,1);
+
   chess.placePiece(blackRook, 0, 7);
   chess.placePiece(blackKnight, 1, 7);
   chess.placePiece(blackBishop, 2, 7);
@@ -48,6 +52,8 @@ $(function () {
   $('#chess .row-0 .column-5').addClass(ChessPieceCSSClass(whiteBishop2));
   $('#chess .row-0 .column-6').addClass(ChessPieceCSSClass(whiteKnight2));
   $('#chess .row-0 .column-7').addClass(ChessPieceCSSClass(whiteRook2));
+
+  $('#chess .row-1 .column-2').addClass(ChessPieceCSSClass(whitePawn));
 
   $('#chess .row-7 .column-0').addClass(ChessPieceCSSClass(blackRook));
   $('#chess .row-7 .column-1').addClass(ChessPieceCSSClass(blackKnight));
@@ -80,7 +86,7 @@ $(function () {
             $('#chess .ingame-message').text('Team: ' + chess.turn + ', Move Piece: ' + currentSelectedPiece.name);
           }
         } else {
-          if (currentSelectedPiece.validMove(x, y)) {
+          if (currentSelectedPiece.validMove(x, y) || currentSelectedPiece.validKillMove(x,y)) {
             var chessPieceCSSClass = ChessPieceCSSClass(currentSelectedPiece);
 
             var previousX = currentSelectedPiece.coordinate.x;

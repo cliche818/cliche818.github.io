@@ -11,6 +11,10 @@ ChessPiece.prototype = {
     return !this.samePosition(destinationX, destinationY) && destinationX >= 0 && destinationX < 8 && destinationY >= 0 && destinationY < 8;
   },
 
+  validKillMove: function (destinationX, destinationY) {
+    return this.validMove(destinationX, destinationY)
+  },
+
   path: function(destinationX, destinationY) {
     return [];
   },

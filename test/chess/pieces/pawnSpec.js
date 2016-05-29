@@ -40,4 +40,22 @@ describe('Pawn', function(){
       });
     });
   });
+  
+  describe('#killPath', function(){
+    it('should return the lower diagonal coordinate for a kill for pawns going downward', function(){
+      pawn = new Pawn('white', 'down');
+      pawn.coordinate = new Coordinate(3,6);
+      
+      expect(pawn.killPath(2,5)).toEqual([[2,5]]);
+      expect(pawn.killPath(4,5)).toEqual([[4,5]]);
+    });
+
+    it('should return the upper diagonal coordinate for a kill for pawns going upward', function(){
+      pawn = new Pawn('white', 'up');
+      pawn.coordinate = new Coordinate(3,2);
+
+      expect(pawn.killPath(2,3)).toEqual([[2,3]]);
+      expect(pawn.killPath(4,3)).toEqual([[4,3]]);
+    });
+  });
 });

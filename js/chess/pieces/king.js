@@ -14,3 +14,7 @@ King.prototype.validMove = function(destinationX, destinationY) {
         var baseRuleValid = ChessPiece.prototype.validMove.call(this,destinationX, destinationY );
         return baseRuleValid && ( ( xDifference === 1 && destinationY === y) || (yDifference === 1 && destinationX === x) || (xDifference === 1 && yDifference === 1) );
     };
+
+King.prototype.validKillMove = function(destinationX, destinationY) {
+  return this.validMove(destinationX, destinationY);
+};

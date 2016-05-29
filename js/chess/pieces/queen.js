@@ -13,6 +13,10 @@ Queen.prototype.validMove = function (destinationX, destinationY) {
   return baseRuleValid && path_to_destination.length > 0;
 };
 
+Queen.prototype.validKillMove = function(destinationX, destinationY) {
+  return this.validMove(destinationX, destinationY);
+};
+
 Queen.prototype.path = function (destinationX, destinationY) {
 
   var x = this.coordinate.x;

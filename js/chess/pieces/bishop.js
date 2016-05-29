@@ -11,6 +11,10 @@ Bishop.prototype.validMove = function(destinationX, destinationY) {
   return path.length > 0;
 };
 
+Bishop.prototype.validKillMove = function(destinationX, destinationY) {
+  return this.validMove(destinationX, destinationY);
+};
+
 Bishop.prototype.path = function(destinationX, destinationY) {
   return this.coordinate.diagonalPath(destinationX, destinationY);
 };

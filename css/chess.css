@@ -57,6 +57,12 @@
     cursor: pointer;
 }
 
+#chess .white-pawn-piece:after {
+    content: "♙";
+    cursor: pointer;
+}
+
+
 #chess .black-king-piece:after {
     content: "♚";
     cursor: pointer;
@@ -79,5 +85,10 @@
 
 #chess .black-rook-piece:after {
     content: "♜";
+    cursor: pointer;
+}
+
+#chess .black-pawn-piece:after {
+    content: "♟";
     cursor: pointer;
 }

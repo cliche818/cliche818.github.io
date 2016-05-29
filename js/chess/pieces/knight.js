@@ -20,6 +20,10 @@ Knight.prototype.validMove = function (destinationX, destinationY) {
   return baseRuleValid && validMove;
 };
 
+Knight.prototype.validKillMove = function(destinationX, destinationY) {
+  return this.validMove(destinationX, destinationY);
+};
+
 Knight.prototype.generateAllPossibleDestinations = function () {
 
   var x = this.coordinate.x;
