@@ -1,5 +1,6 @@
 function ChessPiece(arguments) {
   this.coordinate = new Coordinate(null,null);
+  this.numberOfMoves = 0;
 
   if (typeof arguments !== 'undefined') {
     this.team = arguments[0];

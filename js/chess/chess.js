@@ -41,15 +41,14 @@ Chess.prototype = {
   movePiece: function (piece, destinationX, destinationY) {
     var chessPieceAtDestination = this.board[destinationX][destinationY];
     if (this.canMoveToEmptySpot(piece, destinationX, destinationY)) {
-      console.log('move');
       if (piece.validMove(destinationX, destinationY)) {
         this.setMovedPieceLocation(piece, destinationX, destinationY);
 
+        piece.numberOfMoves ++;
         this.changeTurn();
         return piece;
       }
     } else {
-      console.log('kill');
       if (this.canKillEnemyPiece(piece, destinationX, destinationY)) {
         var killedPiece = chessPieceAtDestination;
         this.setMovedPieceLocation(piece, destinationX, destinationY);
@@ -58,6 +57,7 @@ Chess.prototype = {
           this.winning_team = piece.team;
         }
 
+        piece.numberOfMoves ++;
         this.changeTurn();
         return killedPiece;
       }

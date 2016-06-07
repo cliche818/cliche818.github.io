@@ -63,6 +63,11 @@ describe('Chess Game', function () {
         sinon.stub(chessPiece1, "path", function() { return ([[1, 4]]) });
       });
 
+      it('should increment the chess piece number of moves', function(){
+        chess.movePiece(chessPiece1, 1, 4);
+        expect(chessPiece1.numberOfMoves).toEqual(1);
+      });
+
       describe('moving into a blank space or preoccupied by same team', function () {
         it('should change whose turn it is after moving a piece', function () {
           var returnedPiece = chess.movePiece(chessPiece1, 1, 4);

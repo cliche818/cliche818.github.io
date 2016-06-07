@@ -11,8 +11,11 @@ describe('Pawn', function(){
       });
 
       it('return true for two spots above itself only if its first move', function(){
-        expect(pawn.validMove(3,3, true)).toBe(true);
-        expect(pawn.validMove(3,3, false)).toBe(false);
+        pawn.numberOfMoves = 0;
+        expect(pawn.validMove(3,3)).toBe(true);
+
+        pawn.numberOfMoves = 1;
+        expect(pawn.validMove(3,3)).toBe(false);
       });
 
       it('returns false for any other moves', function(){
@@ -31,8 +34,11 @@ describe('Pawn', function(){
       });
 
       it('return true for two spots above itself only if its first move', function(){
-        expect(pawn.validMove(3,4, true)).toBe(true);
-        expect(pawn.validMove(3,4, false)).toBe(false);
+        pawn.numberOfMoves = 0;
+        expect(pawn.validMove(3,4)).toBe(true);
+
+        pawn.numberOfMoves = 1;
+        expect(pawn.validMove(3,4)).toBe(false);
       });
 
       it('returns false for any other moves', function(){

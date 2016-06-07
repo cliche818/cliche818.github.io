@@ -6,6 +6,12 @@ describe('Chess Piece', function () {
 
   });
 
+  describe('incrementMoves', function(){
+    it('should default number of moves to 0', function(){
+      expect(chessPiece.numberOfMoves).toEqual(0);
+    });
+  });
+
   describe('valid move', function () {
     beforeEach(function () {
       chessPiece.coordinate = new Coordinate(1,1);
