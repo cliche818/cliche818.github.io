@@ -13,7 +13,13 @@ $(function () {
   var whiteRook2 = new Rook('white');
 
   var whitePawn = new Pawn('white', 'up');
-
+  var whitePawn1 = new Pawn('white', 'up');
+  var whitePawn2 = new Pawn('white', 'up');
+  var whitePawn3 = new Pawn('white', 'up');
+  var whitePawn4 = new Pawn('white', 'up');
+  var whitePawn5 = new Pawn('white', 'up');
+  var whitePawn6 = new Pawn('white', 'up');
+  var whitePawn7 = new Pawn('white', 'up');
 
   var blackKing = new King('black');
   var blackQueen = new Queen('black');
@@ -24,6 +30,15 @@ $(function () {
   var blackRook = new Rook('black');
   var blackRook2 = new Rook('black');
 
+  var blackPawn = new Pawn('black', 'down');
+  var blackPawn1 = new Pawn('black', 'down');
+  var blackPawn2 = new Pawn('black', 'down');
+  var blackPawn3 = new Pawn('black', 'down');
+  var blackPawn4 = new Pawn('black', 'down');
+  var blackPawn5 = new Pawn('black', 'down');
+  var blackPawn6 = new Pawn('black', 'down');
+  var blackPawn7 = new Pawn('black', 'down');
+
   chess.placePiece(whiteRook, 0, 0);
   chess.placePiece(whiteKnight, 1, 0);
   chess.placePiece(whiteBishop, 2, 0);
@@ -33,7 +48,14 @@ $(function () {
   chess.placePiece(whiteKnight2, 6, 0);
   chess.placePiece(whiteRook2, 7, 0);
 
-  chess.placePiece(whitePawn, 2,1);
+  chess.placePiece(whitePawn, 0,1);
+  chess.placePiece(whitePawn1, 1,1);
+  chess.placePiece(whitePawn2, 2,1);
+  chess.placePiece(whitePawn3, 3,1);
+  chess.placePiece(whitePawn4, 4,1);
+  chess.placePiece(whitePawn5, 5,1);
+  chess.placePiece(whitePawn6, 6,1);
+  chess.placePiece(whitePawn7, 7,1);
 
   chess.placePiece(blackRook, 0, 7);
   chess.placePiece(blackKnight, 1, 7);
@@ -44,6 +66,15 @@ $(function () {
   chess.placePiece(blackKnight2, 6, 7);
   chess.placePiece(blackRook2, 7, 7);
 
+  chess.placePiece(blackPawn, 0,6);
+  chess.placePiece(blackPawn1, 1,6);
+  chess.placePiece(blackPawn2, 2,6);
+  chess.placePiece(blackPawn3, 3,6);
+  chess.placePiece(blackPawn4, 4,6);
+  chess.placePiece(blackPawn5, 5,6);
+  chess.placePiece(blackPawn6, 6,6);
+  chess.placePiece(blackPawn7, 7,6);
+
   $('#chess .row-0 .column-0').addClass(ChessPieceCSSClass(whiteRook));
   $('#chess .row-0 .column-1').addClass(ChessPieceCSSClass(whiteKnight));
   $('#chess .row-0 .column-2').addClass(ChessPieceCSSClass(whiteBishop));
@@ -53,7 +84,14 @@ $(function () {
   $('#chess .row-0 .column-6').addClass(ChessPieceCSSClass(whiteKnight2));
   $('#chess .row-0 .column-7').addClass(ChessPieceCSSClass(whiteRook2));
 
-  $('#chess .row-1 .column-2').addClass(ChessPieceCSSClass(whitePawn));
+  $('#chess .row-1 .column-0').addClass(ChessPieceCSSClass(whitePawn));
+  $('#chess .row-1 .column-1').addClass(ChessPieceCSSClass(whitePawn1));
+  $('#chess .row-1 .column-2').addClass(ChessPieceCSSClass(whitePawn2));
+  $('#chess .row-1 .column-3').addClass(ChessPieceCSSClass(whitePawn3));
+  $('#chess .row-1 .column-4').addClass(ChessPieceCSSClass(whitePawn4));
+  $('#chess .row-1 .column-5').addClass(ChessPieceCSSClass(whitePawn5));
+  $('#chess .row-1 .column-6').addClass(ChessPieceCSSClass(whitePawn6));
+  $('#chess .row-1 .column-7').addClass(ChessPieceCSSClass(whitePawn7));
 
   $('#chess .row-7 .column-0').addClass(ChessPieceCSSClass(blackRook));
   $('#chess .row-7 .column-1').addClass(ChessPieceCSSClass(blackKnight));
@@ -63,6 +101,15 @@ $(function () {
   $('#chess .row-7 .column-5').addClass(ChessPieceCSSClass(blackBishop2));
   $('#chess .row-7 .column-6').addClass(ChessPieceCSSClass(blackKnight2));
   $('#chess .row-7 .column-7').addClass(ChessPieceCSSClass(blackRook2));
+
+  $('#chess .row-6 .column-0').addClass(ChessPieceCSSClass(blackPawn));
+  $('#chess .row-6 .column-1').addClass(ChessPieceCSSClass(blackPawn1));
+  $('#chess .row-6 .column-2').addClass(ChessPieceCSSClass(blackPawn2));
+  $('#chess .row-6 .column-3').addClass(ChessPieceCSSClass(blackPawn3));
+  $('#chess .row-6 .column-4').addClass(ChessPieceCSSClass(blackPawn4));
+  $('#chess .row-6 .column-5').addClass(ChessPieceCSSClass(blackPawn5));
+  $('#chess .row-6 .column-6').addClass(ChessPieceCSSClass(blackPawn6));
+  $('#chess .row-6 .column-7').addClass(ChessPieceCSSClass(blackPawn7));
 
   /* initialize every grid spot with interactive click events */
   var selectingPiece = true;
