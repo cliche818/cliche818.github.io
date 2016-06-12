@@ -1,0 +1,19 @@
+#connect-four .hole-spot {
+  border: 1px solid black;
+  height: 50px; }
+
+#connect-four .centered {
+  text-align: center; }
+
+#connect-four .centered > div {
+  float: none;
+  display: inline-block; }
+
+#connect-four .ingame-message {
+  font-weight: bold; }
+
+#connect-four .player-1-color {
+  background-color: #18BC9C; }
+
+#connect-four .player-2-color {
+  background-color: #2C3E50; }

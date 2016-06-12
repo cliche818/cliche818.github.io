@@ -1,0 +1,97 @@
+$light-main-scheme-color: #18bc9c;
+
+#chess {
+  .coordinate {
+    border: 1px solid black;
+    height: 50px;
+    font-size: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+  }
+
+  .coordinate:after {
+    content: "";
+  }
+
+  .row:nth-child(even) .coordinate:nth-child(even), .row:nth-child(odd) .coordinate:nth-child(odd) {
+    background-color: $light-main-scheme-color;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .centered > div {
+    float: none;
+    display: inline-block;
+  }
+
+  .row-label {
+    font-size: 65px;
+  }
+
+  .ingame-message {
+    font-weight: bold;
+  }
+
+  .white-king-piece:after {
+    content: "♔";
+    cursor: pointer;
+  }
+
+  .white-queen-piece:after {
+    content: "♕";
+    cursor: pointer;
+  }
+
+  .white-knight-piece:after {
+    content: "♘";
+    cursor: pointer;
+  }
+
+  .white-bishop-piece:after {
+    content: "♗";
+    cursor: pointer;
+  }
+
+  .white-rook-piece:after {
+    content: "♖";
+    cursor: pointer;
+  }
+
+  .white-pawn-piece:after {
+    content: "♙";
+    cursor: pointer;
+  }
+
+  .black-king-piece:after {
+    content: "♚";
+    cursor: pointer;
+  }
+
+  .black-queen-piece:after {
+    content: "♛";
+    cursor: pointer;
+  }
+
+  .black-knight-piece:after {
+    content: "♞";
+    cursor: pointer;
+  }
+
+  .black-bishop-piece:after {
+    content: "♝";
+    cursor: pointer;
+  }
+
+  .black-rook-piece:after {
+    content: "♜";
+    cursor: pointer;
+  }
+
+  .black-pawn-piece:after {
+    content: "♟";
+    cursor: pointer;
+  }
+}
