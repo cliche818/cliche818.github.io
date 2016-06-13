@@ -12,10 +12,15 @@
     "karma": "^0.13.15",
     "node-sass": "^3.7.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.2",
+    "istanbul": "^0.4.3",
+    "karma-coverage": "^1.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "node-sass -w scss/ -o css/"
+    "test": "karma start karma.conf.js",
+    "build-css": "node-sass -w scss/ -o css/",
+    "coverage": "codeclimate-test-reporter < lcov.info"
   },
   "repository": {
     "type": "git",
