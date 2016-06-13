@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/cliche818/cliche818.github.io/badges/gpa.svg)](https://codeclimate.com/github/cliche818/cliche818.github.io)
+[![Test Coverage](https://codeclimate.com/github/cliche818/cliche818.github.io/badges/coverage.svg)](https://codeclimate.com/github/cliche818/cliche818.github.io/coverage)
 
 # cliche818.github.io
 
