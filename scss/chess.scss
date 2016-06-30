@@ -1,5 +1,12 @@
 $light-main-scheme-color: #18bc9c;
 
+@mixin chesspiece {
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}
+
 #chess {
   .coordinate {
     border: 1px solid black;
@@ -35,63 +42,100 @@ $light-main-scheme-color: #18bc9c;
     font-weight: bold;
   }
 
-  .white-king-piece:after {
-    content: "♔";
-    cursor: pointer;
+  .white-king-piece {
+    &:after {
+      content: "♔";
+    }
+
+    @include chesspiece()
   }
 
-  .white-queen-piece:after {
-    content: "♕";
-    cursor: pointer;
+  .white-queen-piece {
+    &:after {
+      content: "♕";
+    }
+
+    @include chesspiece()
   }
 
-  .white-knight-piece:after {
-    content: "♘";
-    cursor: pointer;
+
+  .white-knight-piece {
+    &:after {
+      content: "♘";
+    }
+
+    @include chesspiece()
   }
 
-  .white-bishop-piece:after {
-    content: "♗";
-    cursor: pointer;
+  .white-bishop-piece {
+    &:after {
+      content: "♗";
+    }
+
+    @include chesspiece()
   }
 
-  .white-rook-piece:after {
-    content: "♖";
-    cursor: pointer;
+  .white-rook-piece {
+    &:after {
+      content: "♖";
+    }
+
+    @include chesspiece()
   }
 
-  .white-pawn-piece:after {
-    content: "♙";
-    cursor: pointer;
+  .white-pawn-piece {
+    &:after {
+      content: "♙";
+    }
+
+    @include chesspiece()
   }
 
-  .black-king-piece:after {
-    content: "♚";
-    cursor: pointer;
+  .black-king-piece {
+    &:after {
+      content: "♚";
+    }
+
+    @include chesspiece()
   }
 
-  .black-queen-piece:after {
-    content: "♛";
-    cursor: pointer;
+  .black-queen-piece {
+    &:after {
+      content: "♛";
+    }
+
+    @include chesspiece()
   }
 
-  .black-knight-piece:after {
-    content: "♞";
-    cursor: pointer;
+  .black-knight-piece {
+    &:after {
+      content: "♞";
+    }
+
+    @include chesspiece()
   }
 
-  .black-bishop-piece:after {
-    content: "♝";
-    cursor: pointer;
+  .black-bishop-piece {
+    &:after {
+      content: "♝";
+    }
+
+    @include chesspiece()
   }
 
-  .black-rook-piece:after {
-    content: "♜";
-    cursor: pointer;
+  .black-rook-piece {
+    &:after {
+      content: "♜";
+    }
+
+    @include chesspiece()
   }
 
-  .black-pawn-piece:after {
-    content: "♟";
-    cursor: pointer;
+  .black-pawn-piece {
+    &:after {
+      content: "♟";
+    }
+
+    @include chesspiece()
   }
 }

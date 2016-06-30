@@ -27,49 +27,85 @@
   font-weight: bold; }
 
 #chess .white-king-piece:after {
-  content: "♔";
-  cursor: pointer; }
+  content: "♔"; }
+
+#chess .white-king-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .white-queen-piece:after {
-  content: "♕";
-  cursor: pointer; }
+  content: "♕"; }
+
+#chess .white-queen-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .white-knight-piece:after {
-  content: "♘";
-  cursor: pointer; }
+  content: "♘"; }
+
+#chess .white-knight-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .white-bishop-piece:after {
-  content: "♗";
-  cursor: pointer; }
+  content: "♗"; }
+
+#chess .white-bishop-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .white-rook-piece:after {
-  content: "♖";
-  cursor: pointer; }
+  content: "♖"; }
+
+#chess .white-rook-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .white-pawn-piece:after {
-  content: "♙";
-  cursor: pointer; }
+  content: "♙"; }
+
+#chess .white-pawn-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-king-piece:after {
-  content: "♚";
-  cursor: pointer; }
+  content: "♚"; }
+
+#chess .black-king-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-queen-piece:after {
-  content: "♛";
-  cursor: pointer; }
+  content: "♛"; }
+
+#chess .black-queen-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-knight-piece:after {
-  content: "♞";
-  cursor: pointer; }
+  content: "♞"; }
+
+#chess .black-knight-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-bishop-piece:after {
-  content: "♝";
-  cursor: pointer; }
+  content: "♝"; }
+
+#chess .black-bishop-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-rook-piece:after {
-  content: "♜";
-  cursor: pointer; }
+  content: "♜"; }
+
+#chess .black-rook-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }
 
 #chess .black-pawn-piece:after {
-  content: "♟";
-  cursor: pointer; }
+  content: "♟"; }
+
+#chess .black-pawn-piece:hover {
+  cursor: pointer;
+  transform: scale(1.05); }

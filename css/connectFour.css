@@ -17,3 +17,27 @@
 
 #connect-four .player-2-color {
   background-color: #2C3E50; }
+
+#connect-four .column-0:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-1:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-2:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-3:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-4:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-5:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-6:hover {
+  transform: scale(1.05); }
+
+#connect-four .column-7:hover {
+  transform: scale(1.05); }
