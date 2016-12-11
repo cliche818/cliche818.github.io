@@ -37,3 +37,6 @@ exclude:
   - coverage
   - scss
   - test
+  - package.json
+  - karma.conf.js
+  - README.md
