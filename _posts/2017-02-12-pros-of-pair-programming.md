@@ -11,6 +11,7 @@ Pairs are rotated every week where an incomplete task is left with one developer
 by a new developer.
 
 Here are some of the pro's:
+
 1) Knowledge Transfer
 In Retailcommon, we have taken new hires and be able to get them caught up in 1-2 months.  There is no separate training program.  
 The developer that was in the company longer will hand hold the new hire through a few features and by the end of it, they will end
