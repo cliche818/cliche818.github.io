@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How I do Pair Programming"
-date:   2016-02-17 15:38:00 -0500
+date:   2017-02-17 15:38:00 -0500
 categories: programming
 ---
 

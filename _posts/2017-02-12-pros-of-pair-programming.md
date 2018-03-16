@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Pros of Pair Programming"
-date:   2016-02-12 14:53:52 -0500
+date:   2017-02-12 14:53:52 -0500
 categories: programming
 ---
 
