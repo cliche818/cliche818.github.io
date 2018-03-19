@@ -10,14 +10,14 @@ I recently tried Amazon SageMaker, a more hands on version Amazon Machine Learni
 1) EnvironmentLocationNotFound: Not a conda environment: /home/ec2-user/anaconda3/envs/anaconda3
 ------------------------------------------------------------
 
-![sagemaker-env-error]({{site.url}}/assets/img/sagemaker_env_error.png)
+![sagemaker-env-error]({{site.url}}/img/sagemaker_env_error.png)
 
 Not sure why this pops up or what it is, but I saw it pop up even in Amazon's demo video.  But this didn't hinder what I was trying to do.
 
 2) Installing new packages in a Conda environment  
 -------------------------------------------------- 
 
-![sagemaker-pkg-error]({{site.url}}/assets/img/sagemaker_pkg_error.png)
+![sagemaker-pkg-error]({{site.url}}/img/sagemaker_pkg_error.png)
 
 The UI of of the Jupyter notebook isn't that intuitive, but in order to install Keras, I selected tensorflow_p36 and it showed me what were the installed packages on the right side.  The left bottom side is what other packages can be installed.  Pressing the arrow on the top left corner, installs the selected package(s) to that environment.
 
