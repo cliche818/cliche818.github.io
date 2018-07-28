@@ -23,15 +23,16 @@ SageMaker seq2seq model requires the data to be in protobuf format and several f
 Luckily the German to English tranlation example provided a script to generate the above 4 files
 
 I initially created 4 text files (2 files for training, 2 files for validation).  Each set had 2 files:
-product.txt
-Sony SRSX11 Ultra-Portable Bluetooth Speaker (Pink)
-GameWear NFL Indianapolis Colts Classic Football Bracelet
-...
 
-category.txt
-audio
-jewellery_accessories
-...
+##### product.txt
+###### Sony SRSX11 Ultra-Portable Bluetooth Speaker (Pink)
+###### GameWear NFL Indianapolis Colts Classic Football Bracelet
+###### ...
+
+##### category.txt
+###### audio
+###### jewellery_accessories
+###### ...
 
 Each line in both files correspond to each other.
 
@@ -43,10 +44,12 @@ python3 create_vocab_proto.py --train-source product_name.csv --train-target cat
 {% endhighlight %}
 
 2) Running the Jupyter Notebook
+--------------------------------
 
 I modified the SageMaker German to English Jupyter Notebook to point to my 4 files in s3.  The training only took 10 mins.
 
 3) Using in Ruby
+----------------
 
 Below is my example method.
 
