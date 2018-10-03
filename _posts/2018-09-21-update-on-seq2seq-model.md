@@ -24,7 +24,7 @@ pry(main)> SageMakerEndpointService.infer_category('Apple 13.3" MacBook Air')
 These ones are good, but then I get results like below:
 
 {% highlight Bash %}
-[14] pry(main)> SageMakerEndpointService.infer_category('UGET Women\'s Sweater Casual Oversized Baggy Off-Shoulder Shirts Batwing Sleeve Pullover Shirts Tops')
+[14] pry(main)> SageMakerEndpointService.infer_category('UGET Womens Sweater Casual Oversized Baggy Off-Shoulder Shirts Batwing Sleeve Pullover Shirts Tops')
 => {"predictions"=>[{"target"=>"health_fitness"}]}
 [15] pry(main)> SageMakerEndpointService.infer_category('JayJay Women Boho High Low Casual Maxi U-Neck Short Sleeve Tie Dye Print Long Dress with Pocket')
 => {"predictions"=>[{"target"=>"health_fitness"}]}
@@ -32,11 +32,10 @@ These ones are good, but then I get results like below:
 => {"predictions"=>[{"target"=>"home_housewares"}]}
 [17] pry(main)> SageMakerEndpointService.infer_category('Fender F Neckplate Chrome')
 => {"predictions"=>[{"target"=>"health_fitness"}]}
-[18] pry(main)> SageMakerEndpointService.infer_category('Gevalia Colombia Coffee, K-CUP Pods, 100 Count')
 {% endhighlight %}
 
 These ones are really off.  I am surprised to not see any men or women categories show up.  They seem to all appear in health_fitness.
 
-The main problem I saw was alot of products had multiple categories like men's cloths belonged in both health fitness and men's categories.  My training data had to do to a one to one mapping and that gave conflicting information.  I also noticed quite a few of my data points were outright wrong.
+The main problem I saw was a lot of products had multiple categories like men's cloths belonged in both health fitness and men's categories.  My training data had to do to a one to one mapping and that gave conflicting information.  I also noticed quite a few of my data points were outright wrong.
 
 Overall, it was interesting to try even though the results were not great.
