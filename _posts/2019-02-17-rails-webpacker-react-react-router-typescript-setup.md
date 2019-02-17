@@ -57,4 +57,4 @@ yarn add @types/react @types/react-dom
 
 Rename all jsx files to tsx: hello-react.jsx to hello-react.tsx
 
-Further reading: https://github.com/rails/webpacker/blob/master/docs/typescript.md
+Further reading: <https://github.com/rails/webpacker/blob/master/docs/typescript.md>
