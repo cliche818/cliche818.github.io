@@ -7,4 +7,3 @@ _site
 .sass-cache
 .jekyll-metadata
 /.history
-/assets/bundle.js
