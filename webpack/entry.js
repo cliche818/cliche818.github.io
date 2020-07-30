@@ -1,12 +1,12 @@
-// import React, { Component } from 'react';
-// import { render } from 'react-dom';
-// import Hello from './components/Hello';
-// class App extends Component {
-//     render() {
-//         return (
-//             <Hello />
-//         )
-//     }
-// } render(<App />, document.getElementById('root'));
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import TodoList from '../components/TodoList.jsx';
+class App extends Component {
+    render() {
+        return (
+            <TodoList />
+        )
+    }
+} render(<App />, document.getElementById('root'));
 
-console.log("entry js works :)")
+
