@@ -11,8 +11,9 @@ Running this project
 
 Javascript Tests
 ----------------
-- npm test
+a) npm test (for older files)
 - go to http://localhost:9876/ (Karma requires the page to open in a browser to run the tests)
+b) yarn jest (for react component tests)
 
 TodoList (React Test Page)
 --------------------------
